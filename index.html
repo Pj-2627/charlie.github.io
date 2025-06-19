@@ -19,6 +19,9 @@
         .font-playfair { font-family: 'Playfair Display', serif; }
         .font-inter { font-family: 'Inter', sans-serif; }
 
+        /* Custom Yellow Color */
+        .bg-golden-yellow { background-color: #efcd44; }
+
         /* Typewriter Effect */
         .typewriter {
             overflow: hidden;
@@ -35,20 +38,6 @@
         @keyframes blink-caret {
             from, to { border-color: transparent; }
             50% { border-color: black; }
-        }
-
-        /* Moving Grid Background */
-        .moving-grid {
-            background-image: 
-                linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
-            background-size: 60px 60px;
-            animation: moveGrid 10s linear infinite;
-        }
-
-        @keyframes moveGrid {
-            0% { background-position: 0 0; }
-            100% { background-position: 60px 60px; }
         }
 
         /* Film Grain */
@@ -83,6 +72,19 @@
 
         .vintage-border:hover {
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Yellow Section Vintage Border */
+        .vintage-border-yellow {
+            border: 2px solid black;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .vintage-border-yellow:hover {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+            background-color: black;
+            color: #efcd44;
         }
 
         /* Spotlight */
@@ -167,7 +169,7 @@
         .large-number {
             font-size: clamp(4rem, 8vw, 8rem);
             line-height: 1;
-            opacity: 0.1;
+            opacity: 0.15;
             position: absolute;
             top: -2rem;
             left: -1rem;
@@ -203,11 +205,11 @@
             background: #fff;
         }
         ::-webkit-scrollbar-thumb {
-            background: #ccc;
+            background: #efcd44;
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #aaa;
+            background: #D97706;
         }
 
         /* Responsive Typography */
@@ -283,7 +285,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center relative moving-grid film-grain">
+    <section id="home" class="min-h-screen flex items-center justify-center relative film-grain">
         <div class="absolute inset-0 bg-white/10"></div>
         <div class="absolute inset-0 spotlight"></div>
         
@@ -317,50 +319,47 @@
         </div>
 
         <!-- Responsive Floating Elements -->
-        <div class="absolute top-20 left-4 sm:left-20 w-12 sm:w-16 h-12 sm:h-16 border border-black rotate-45 floating"></div>
-        <div class="absolute bottom-20 right-4 sm:right-20 w-8 sm:w-12 h-8 sm:h-12 border border-black floating" style="animation-delay: 2s;"></div>
-        <div class="absolute top-1/2 left-2 sm:left-10 w-6 sm:w-8 h-6 sm:h-8 border border-black rounded-full floating" style="animation-delay: 4s;"></div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-16 sm:py-24 lg:py-32 bg-black text-white relative diagonal-split">
+    <section id="about" class="py-16 sm:py-24 lg:py-32 bg-[#efcd44] text-black relative diagonal-split">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                 <!-- Left Side - Large Text -->
                 <div class="slide-in-left">
                     <div class="relative">
-                        <div class="large-number font-playfair text-white">01</div>
-                        <h2 class="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 leading-tight">
+                        <div class="large-number font-playfair text-black">01</div>
+                        <h2 class="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 leading-tight text-black">
                             We Create
                             <br>
                             <span class="italic">Magic</span>
                         </h2>
                     </div>
-                    <p class="font-inter text-lg sm:text-xl lg:text-2xl text-gray-300 leading-relaxed mb-6 sm:mb-8">
+                    <p class="font-inter text-lg sm:text-xl lg:text-2xl text-gray-800 leading-relaxed mb-6 sm:mb-8">
                         Every story deserves to be told with passion, precision, and artistic vision.
                     </p>
-                    <div class="w-24 sm:w-32 h-1 bg-white"></div>
+                    <div class="w-24 sm:w-32 h-1 bg-black"></div>
                 </div>
 
                 <!-- Right Side - Content -->
                 <div class="slide-in-right">
                     <div class="space-y-6 sm:space-y-8">
-                        <p class="font-inter text-base sm:text-lg text-gray-400 leading-relaxed">
+                        <p class="font-inter text-base sm:text-lg text-gray-800 leading-relaxed">
                             Charlie Motion Pictures stands at the forefront of contemporary filmmaking, where artistic vision meets technical excellence. We don't just create videos – we craft experiences that move, inspire, and transform audiences.
                         </p>
-                        <p class="font-inter text-base sm:text-lg text-gray-400 leading-relaxed">
+                        <p class="font-inter text-base sm:text-lg text-gray-800 leading-relaxed">
                             Our approach combines classical cinematic techniques with innovative storytelling methods, ensuring that each project resonates with authenticity and emotional depth.
                         </p>
                         
                         <!-- Stats -->
                         <div class="grid grid-cols-2 gap-6 sm:gap-8 pt-6 sm:pt-8">
                             <div>
-                                <div class="font-playfair text-3xl sm:text-4xl font-bold text-white mb-2" data-count="150">0</div>
-                                <div class="font-inter text-xs sm:text-sm text-gray-500 uppercase tracking-wider">Projects Completed</div>
+                                <div class="font-playfair text-3xl sm:text-4xl font-bold text-black mb-2" data-count="150">0</div>
+                                <div class="font-inter text-xs sm:text-sm text-gray-700 uppercase tracking-wider">Projects Completed</div>
                             </div>
                             <div>
-                                <div class="font-playfair text-3xl sm:text-4xl font-bold text-white mb-2" data-count="25">0</div>
-                                <div class="font-inter text-xs sm:text-sm text-gray-500 uppercase tracking-wider">Awards Won</div>
+                                <div class="font-playfair text-3xl sm:text-4xl font-bold text-black mb-2" data-count="25">0</div>
+                                <div class="font-inter text-xs sm:text-sm text-gray-700 uppercase tracking-wider">Awards Won</div>
                             </div>
                         </div>
                     </div>
@@ -448,17 +447,17 @@
     </section>
 
     <!-- Team Section -->
-    <section id="creators" class="py-16 sm:py-24 lg:py-32 bg-gray-900 text-white relative">
+    <section id="creators" class="py-16 sm:py-24 lg:py-32 bg-[#efcd44] text-black relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Section Header -->
             <div class="text-center mb-12 sm:mb-16 lg:mb-20 scroll-reveal">
                 <div class="relative inline-block">
-                    <div class="large-number font-playfair text-white">03</div>
-                    <h2 class="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6">
+                    <div class="large-number font-playfair text-black">03</div>
+                    <h2 class="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 text-black">
                         The Visionaries
                     </h2>
                 </div>
-                <p class="font-inter text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto">
+                <p class="font-inter text-lg sm:text-xl text-gray-800 max-w-3xl mx-auto">
                     Meet the creative minds who bring stories to life
                 </p>
             </div>
@@ -474,7 +473,7 @@
                             <p class="font-inter text-gray-700 text-sm">Creative Director</p>
                         </div>
                     </div>
-                    <p class="font-inter text-sm sm:text-base text-gray-400 leading-relaxed">
+                    <p class="font-inter text-sm sm:text-base text-gray-800 leading-relaxed">
                         Visionary filmmaker with 8+ years of experience crafting compelling narratives that resonate with audiences worldwide.
                     </p>
                 </div>
@@ -488,7 +487,7 @@
                             <p class="font-inter text-gray-700 text-sm">Director of Photography</p>
                         </div>
                     </div>
-                    <p class="font-inter text-sm sm:text-base text-gray-400 leading-relaxed">
+                    <p class="font-inter text-sm sm:text-base text-gray-800 leading-relaxed">
                         Master of light and composition, bringing visual poetry to every frame with innovative cinematography techniques.
                     </p>
                 </div>
@@ -502,7 +501,7 @@
                             <p class="font-inter text-gray-700 text-sm">Head of Post-Production</p>
                         </div>
                     </div>
-                    <p class="font-inter text-sm sm:text-base text-gray-400 leading-relaxed">
+                    <p class="font-inter text-sm sm:text-base text-gray-800 leading-relaxed">
                         Transforms raw footage into compelling narratives through expert editing, color grading, and sound design.
                     </p>
                 </div>
@@ -804,7 +803,7 @@
                         observer.unobserve(entry.target);
                     }
                 });
-            });
+                });
             observer.observe(aboutSection);
         });
 
