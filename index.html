@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,274 +9,220 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
-        .font-playfair { font-family: 'Playfair Display', serif; }
         .font-inter { font-family: 'Inter', sans-serif; }
-
-        /* Custom Yellow Color */
-        .bg-golden-yellow { background-color: #efcd44; }
-
-        /* Typewriter Effect */
-        .typewriter {
-            overflow: hidden;
-            border-right: 3px solid black;
-            white-space: nowrap;
-            animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
-        }
-
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent; }
-            50% { border-color: black; }
-        }
-
-        /* Film Grain */
-        .film-grain::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 50%, transparent 20%, rgba(0,0,0,0.01) 21%, rgba(0,0,0,0.01) 34%, transparent 35%),
-                linear-gradient(0deg, transparent 24%, rgba(0,0,0,0.02) 25%, rgba(0,0,0,0.02) 26%, transparent 27%);
-            opacity: 0.6;
-            pointer-events: none;
-            animation: grain 0.3s infinite;
-        }
-
-        @keyframes grain {
-            0%, 100% { transform: translate(0, 0); }
-            25% { transform: translate(-1px, 0); }
-            50% { transform: translate(1px, -1px); }
-            75% { transform: translate(0, 1px); }
-        }
-
-        /* Vintage Border */
-        .vintage-border {
-            border: 2px solid black;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .vintage-border:hover {
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Yellow Section Vintage Border */
-        .vintage-border-yellow {
-            border: 2px solid black;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .vintage-border-yellow:hover {
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-            background-color: black;
-            color: #efcd44;
-        }
-
-        /* Spotlight */
-        .spotlight {
-            background: radial-gradient(circle at center, rgba(0,0,0,0.08) 0%, transparent 70%);
-            animation: spotlight 4s ease-in-out infinite alternate;
-        }
-
-        @keyframes spotlight {
-            0% { opacity: 0.1; }
-            100% { opacity: 0.6; }
-        }
-
-        /* Floating */
-        .floating {
-            animation: floating 8s ease-in-out infinite;
-        }
-
-        @keyframes floating {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-
-        /* Elegant Underline */
-        .elegant-underline {
-            position: relative;
-        }
-
-        .elegant-underline::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 2px;
-            background: black;
-            transition: width 0.3s ease;
-        }
-
-        .elegant-underline:hover::after {
-            width: 100%;
-        }
-
-        /* Scroll Reveal */
-        .scroll-reveal {
+        
+        /* Custom Colors */
+        .bg-primary { background-color: #B69A2A; }
+        .text-primary { color: #B69A2A; }
+        .border-primary { border-color: #B69A2A; }
+        .hover\:bg-primary:hover { background-color: #B69A2A; }
+        .hover\:text-primary:hover { color: #B69A2A; }
+        
+        /* Animations */
+        .fade-in {
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s ease;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
         }
-
-        .scroll-reveal.revealed {
+        
+        .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Slide Animations */
-        .slide-in-left {
-            transform: translateX(-100px);
-            opacity: 0;
-            transition: all 1s ease;
+        
+        .word-cycle {
+            display: inline-block;
+            min-width: 200px;
+            text-align: left;
         }
-
-        .slide-in-right {
-            transform: translateX(100px);
-            opacity: 0;
-            transition: all 1s ease;
+        
+        /* Card Hover Effects */
+        .card-hover {
+            transition: all 0.3s ease;
         }
-
-        .slide-in-left.revealed,
-        .slide-in-right.revealed {
-            transform: translateX(0);
-            opacity: 1;
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
-
-        /* Diagonal Split */
-        .diagonal-split {
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-        }
-
-        /* Large Number Style */
-        .large-number {
-            font-size: clamp(4rem, 8vw, 8rem);
-            line-height: 1;
-            opacity: 0.15;
-            position: absolute;
-            top: -2rem;
-            left: -1rem;
-            font-weight: 900;
-        }
-
+        
         /* Mobile Menu Animation */
-        .mobile-menu-enter {
+        .mobile-menu {
             transform: translateX(-100%);
-            opacity: 0;
+            transition: transform 0.3s ease;
         }
-
-        .mobile-menu-enter-active {
+        
+        .mobile-menu.open {
             transform: translateX(0);
-            opacity: 1;
+        }
+        
+        /* Button Styles */
+        .btn-primary {
+            background-color: #B69A2A;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 500;
             transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
-
-        /* Header Logo Animation */
-        .logo-glow {
+        
+        .btn-primary:hover {
+            background-color: #9d8424;
+        }
+        
+        .btn-secondary {
+            background-color: black;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 500;
             transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
-
-        .logo-glow:hover {
-            text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        
+        .btn-secondary:hover {
+            background-color: #374151;
         }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+        
+        .btn-outline {
+            background-color: transparent;
+            color: black;
+            padding: 12px 24px;
+            border: 2px solid #B69A2A;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
-        ::-webkit-scrollbar-track {
-            background: #fff;
+        
+        .btn-outline:hover {
+            background-color: #B69A2A;
+            color: white;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #efcd44;
-            border-radius: 4px;
+        
+        /* Form Styles */
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #D97706;
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #B69A2A;
         }
-
-        /* Responsive Typography */
+        
+        .form-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-textarea:focus {
+            outline: none;
+            border-color: #B69A2A;
+        }
+        
+        .form-select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            background-color: white;
+        }
+        
+        .form-select:focus {
+            outline: none;
+            border-color: #B69A2A;
+        }
+        
+        /* Badge Styles */
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background-color: rgba(182, 154, 42, 0.2);
+            color: black;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            .large-number {
-                font-size: 4rem;
-                top: -1rem;
-                left: -0.5rem;
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
             }
         }
     </style>
 </head>
 
-<body class="bg-white text-black overflow-x-hidden">
-    <!-- Enhanced Navigation -->
-    <nav class="fixed w-full top-0 z-50 transition-all duration-300" id="navbar">
-        <div class="bg-white/95 backdrop-blur-md border-b border-gray-200">
+<body class="bg-white text-black font-inter">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300">
+        <div class="bg-white/95 backdrop-blur-md shadow-sm">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-20">
-                    <!-- Enhanced Logo -->
-                    <div class="flex items-center space-x-4">
-                        <div class="w-12 h-12 border-2 border-black rounded-full flex items-center justify-center">
-                            <span class="font-playfair text-xl font-bold">CM</span>
+                    <!-- Logo -->
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                            <span class="text-black font-bold">▶</span>
                         </div>
                         <div>
-                            <div class="font-playfair text-xl sm:text-2xl font-bold text-black logo-glow">
-                                Charlie Motion
-                            </div>
-                            <div class="font-inter text-xs text-gray-600 uppercase tracking-wider hidden sm:block">
-                                Pictures
-                            </div>
+                            <div class="font-bold text-xl text-black">Charlie Motion</div>
+                            <div class="text-xs text-gray-600 uppercase tracking-wider">Pictures</div>
                         </div>
                     </div>
 
                     <!-- Desktop Menu -->
                     <div class="hidden lg:flex items-center space-x-8">
-                        <a href="#home" class="font-inter text-sm text-gray-700 hover:text-black transition-colors duration-300 elegant-underline uppercase tracking-wider">Home</a>
-                        <a href="#about" class="font-inter text-sm text-gray-700 hover:text-black transition-colors duration-300 elegant-underline uppercase tracking-wider">About</a>
-                        <a href="#portfolio" class="font-inter text-sm text-gray-700 hover:text-black transition-colors duration-300 elegant-underline uppercase tracking-wider">Portfolio</a>
-                        <a href="#creators" class="font-inter text-sm text-gray-700 hover:text-black transition-colors duration-300 elegant-underline uppercase tracking-wider">Team</a>
-                        <a href="#connect" class="vintage-border px-6 py-2 font-inter text-sm font-medium text-black hover:bg-black hover:text-white transition-all duration-300 uppercase tracking-wider">Contact</a>
+                        <a href="#home" class="text-gray-700 hover:text-black transition-colors">Home</a>
+                        <a href="#about" class="text-gray-700 hover:text-black transition-colors">About</a>
+                        <a href="#portfolio" class="text-gray-700 hover:text-black transition-colors">Work</a>
+                        <a href="#team" class="text-gray-700 hover:text-black transition-colors">Team</a>
+                        <button class="btn-primary">Contact Us</button>
                     </div>
 
                     <!-- Mobile Menu Button -->
-                    <button id="mobile-menu-btn" class="lg:hidden flex flex-col items-center justify-center w-8 h-8 space-y-1">
-                        <span class="w-6 h-0.5 bg-black transition-all duration-300" id="line1"></span>
-                        <span class="w-6 h-0.5 bg-black transition-all duration-300" id="line2"></span>
-                        <span class="w-6 h-0.5 bg-black transition-all duration-300" id="line3"></span>
+                    <button id="mobile-menu-btn" class="lg:hidden p-2">
+                        <div class="w-6 h-6 flex flex-col justify-center space-y-1">
+                            <span class="block w-6 h-0.5 bg-black transition-all" id="line1"></span>
+                            <span class="block w-6 h-0.5 bg-black transition-all" id="line2"></span>
+                            <span class="block w-6 h-0.5 bg-black transition-all" id="line3"></span>
+                        </div>
                     </button>
                 </div>
-            </div>
 
-            <!-- Enhanced Mobile Menu -->
-            <div id="mobile-menu" class="lg:hidden hidden">
-                <div class="bg-white/98 backdrop-blur-md border-t border-gray-200">
+                <!-- Mobile Menu -->
+                <div id="mobile-menu" class="lg:hidden mobile-menu bg-white border-t">
                     <div class="px-4 py-6 space-y-4">
-                        <a href="#home" class="block py-3 px-4 text-gray-700 hover:text-black hover:bg-gray-200 transition-all duration-300 font-inter uppercase tracking-wider">Home</a>
-                        <a href="#about" class="block py-3 px-4 text-gray-700 hover:text-black hover:bg-gray-200 transition-all duration-300 font-inter uppercase tracking-wider">About</a>
-                        <a href="#portfolio" class="block py-3 px-4 text-gray-700 hover:text-black hover:bg-gray-200 transition-all duration-300 font-inter uppercase tracking-wider">Portfolio</a>
-                        <a href="#creators" class="block py-3 px-4 text-gray-700 hover:text-black hover:bg-gray-200 transition-all duration-300 font-inter uppercase tracking-wider">Team</a>
-                        <a href="#connect" class="block py-3 px-4 text-gray-700 hover:text-black hover:bg-gray-200 transition-all duration-300 font-inter uppercase tracking-wider">Contact</a>
-                        
-                        <!-- Mobile Contact Info -->
-                        <div class="pt-6 border-t border-gray-200">
-                            <p class="text-gray-600 font-inter text-sm mb-2">Get in touch</p>
-                            <p class="text-black font-inter text-sm">hello@charliemotion.com</p>
-                            <p class="text-black font-inter text-sm">+1 (555) 123-FILM</p>
-                        </div>
+                        <a href="#home" class="block py-2 text-gray-700 hover:text-black">Home</a>
+                        <a href="#about" class="block py-2 text-gray-700 hover:text-black">About</a>
+                        <a href="#portfolio" class="block py-2 text-gray-700 hover:text-black">Work</a>
+                        <a href="#team" class="block py-2 text-gray-700 hover:text-black">Team</a>
+                        <button class="btn-primary w-full">Contact Us</button>
                     </div>
                 </div>
             </div>
@@ -285,83 +230,105 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center relative film-grain">
-        <div class="absolute inset-0 bg-white/10"></div>
-        <div class="absolute inset-0 spotlight"></div>
-        
-        <div class="relative z-10 text-center px-4 sm:px-6 max-w-6xl mx-auto">
-            <div class="mb-8 sm:mb-12">
-                <h1 class="font-playfair text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold mb-4 sm:mb-6 leading-tight">
-                    <span class="typewriter">Charlie Motion</span>
-                </h1>
-                <h2 class="font-playfair text-2xl sm:text-3xl md:text-4xl text-gray-700 font-light">
-                    Pictures
-                </h2>
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 bg-gradient-to-br from-gray-50 to-white"></div>
+        <div class="absolute top-20 right-20 w-72 h-72 rounded-full blur-3xl opacity-10" style="background-color: #B69A2A;"></div>
+        <div class="absolute bottom-20 left-20 w-96 h-96 rounded-full blur-3xl opacity-5" style="background-color: #B69A2A;"></div>
+
+        <div class="relative z-10 text-center px-4 max-w-6xl mx-auto">
+            <div class="mb-8">
+                <h1 class="hero-title text-6xl md:text-8xl lg:text-9xl font-bold text-black mb-4">Charlie</h1>
+                <div class="flex items-center justify-center space-x-4 mb-6">
+                    <div class="h-px bg-black w-16"></div>
+                    <h2 class="text-2xl md:text-3xl text-gray-600 font-light">Motion Pictures</h2>
+                    <div class="h-px bg-black w-16"></div>
+                </div>
             </div>
 
-            <div class="mb-8 sm:mb-12">
-                <p class="font-inter text-lg sm:text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-                    Crafting timeless stories through the art of cinema
+            <div class="mb-12">
+                <p class="text-xl md:text-2xl text-gray-700 mb-4">
+                    Crafting Cinematic <span id="cycling-word" class="text-primary font-semibold word-cycle">Stories</span>
                 </p>
-                <p class="font-inter text-base sm:text-lg text-gray-600 mt-4 max-w-3xl mx-auto">
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
                     Where passion meets precision in visual storytelling
                 </p>
             </div>
 
-            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
-                <button class="vintage-border px-6 sm:px-8 py-3 sm:py-4 font-inter font-medium text-black hover:bg-black hover:text-white transition-all duration-300 w-full sm:w-auto">
-                    View Our Work
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button class="btn-secondary">
+                    View Our Work →
                 </button>
-                <button class="bg-black text-white px-6 sm:px-8 py-3 sm:py-4 font-inter font-medium hover:bg-gray-800 transition-all duration-300 w-full sm:w-auto">
-                    Start Your Project
+                <button class="btn-outline">
+                    ▶ Watch Reel
                 </button>
             </div>
         </div>
-
-        <!-- Responsive Floating Elements -->
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-16 sm:py-24 lg:py-32 bg-[#efcd44] text-black relative diagonal-split">
+    <section id="about" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-                <!-- Left Side - Large Text -->
-                <div class="slide-in-left">
-                    <div class="relative">
-                        <div class="large-number font-playfair text-black">01</div>
-                        <h2 class="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 leading-tight text-black">
-                            We Create
-                            <br>
-                            <span class="italic">Magic</span>
-                        </h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Content -->
+                <div class="fade-in">
+                    <div class="mb-8">
+                        <div class="inline-block px-4 py-2 rounded-full text-sm font-medium text-black mb-4" style="background-color: rgba(182, 154, 42, 0.2);">
+                            About Us
+                        </div>
+                        <h2 class="section-title text-4xl md:text-5xl font-bold text-black mb-6">We Create Magic Through Motion</h2>
+                        <p class="text-lg text-gray-600 leading-relaxed">
+                            Charlie Motion Pictures stands at the forefront of contemporary filmmaking, where artistic vision meets
+                            technical excellence. We don't just create videos – we craft experiences that move, inspire, and
+                            transform audiences.
+                        </p>
                     </div>
-                    <p class="font-inter text-lg sm:text-xl lg:text-2xl text-gray-800 leading-relaxed mb-6 sm:mb-8">
-                        Every story deserves to be told with passion, precision, and artistic vision.
-                    </p>
-                    <div class="w-24 sm:w-32 h-1 bg-black"></div>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-2 h-2 bg-primary rounded-full mt-3"></div>
+                            <p class="text-gray-600">Classical cinematic techniques with innovative storytelling methods</p>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-2 h-2 bg-primary rounded-full mt-3"></div>
+                            <p class="text-gray-600">Each project resonates with authenticity and emotional depth</p>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-2 h-2 bg-primary rounded-full mt-3"></div>
+                            <p class="text-gray-600">Award-winning team of creative professionals</p>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Right Side - Content -->
-                <div class="slide-in-right">
-                    <div class="space-y-6 sm:space-y-8">
-                        <p class="font-inter text-base sm:text-lg text-gray-800 leading-relaxed">
-                            Charlie Motion Pictures stands at the forefront of contemporary filmmaking, where artistic vision meets technical excellence. We don't just create videos – we craft experiences that move, inspire, and transform audiences.
-                        </p>
-                        <p class="font-inter text-base sm:text-lg text-gray-800 leading-relaxed">
-                            Our approach combines classical cinematic techniques with innovative storytelling methods, ensuring that each project resonates with authenticity and emotional depth.
-                        </p>
-                        
-                        <!-- Stats -->
-                        <div class="grid grid-cols-2 gap-6 sm:gap-8 pt-6 sm:pt-8">
-                            <div>
-                                <div class="font-playfair text-3xl sm:text-4xl font-bold text-black mb-2" data-count="150">0</div>
-                                <div class="font-inter text-xs sm:text-sm text-gray-700 uppercase tracking-wider">Projects Completed</div>
-                            </div>
-                            <div>
-                                <div class="font-playfair text-3xl sm:text-4xl font-bold text-black mb-2" data-count="25">0</div>
-                                <div class="font-inter text-xs sm:text-sm text-gray-700 uppercase tracking-wider">Awards Won</div>
-                            </div>
+                <!-- Right Stats -->
+                <div class="grid grid-cols-2 gap-6 fade-in">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center card-hover">
+                        <div class="w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4" style="background-color: rgba(182, 154, 42, 0.2);">
+                            <span class="text-black text-xl">🎬</span>
                         </div>
+                        <div class="text-3xl font-bold text-black mb-2">150+</div>
+                        <div class="text-sm text-gray-600">Projects</div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center card-hover">
+                        <div class="w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4" style="background-color: rgba(182, 154, 42, 0.2);">
+                            <span class="text-black text-xl">🏆</span>
+                        </div>
+                        <div class="text-3xl font-bold text-black mb-2">25+</div>
+                        <div class="text-sm text-gray-600">Awards</div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center card-hover">
+                        <div class="w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4" style="background-color: rgba(182, 154, 42, 0.2);">
+                            <span class="text-black text-xl">👥</span>
+                        </div>
+                        <div class="text-3xl font-bold text-black mb-2">100+</div>
+                        <div class="text-sm text-gray-600">Happy Clients</div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center card-hover">
+                        <div class="w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4" style="background-color: rgba(182, 154, 42, 0.2);">
+                            <span class="text-black text-xl">⚡</span>
+                        </div>
+                        <div class="text-3xl font-bold text-black mb-2">8+</div>
+                        <div class="text-sm text-gray-600">Years Experience</div>
                     </div>
                 </div>
             </div>
@@ -369,310 +336,331 @@
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="py-16 sm:py-24 lg:py-32 bg-white relative">
+    <section id="portfolio" class="py-24 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Section Header -->
-            <div class="text-center mb-12 sm:mb-16 lg:mb-20 scroll-reveal">
-                <div class="relative inline-block">
-                    <div class="large-number font-playfair text-black">02</div>
-                    <h2 class="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-4 sm:mb-6">
-                        Our Work
-                    </h2>
+            <div class="text-center mb-16 fade-in">
+                <div class="inline-block px-4 py-2 rounded-full text-sm font-medium text-black mb-4" style="background-color: rgba(182, 154, 42, 0.2);">
+                    Our Work
                 </div>
-                <p class="font-inter text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-                    A showcase of our finest productions across various genres and formats
+                <h2 class="section-title text-4xl md:text-5xl font-bold text-black mb-6">Portfolio Showcase</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    A collection of our finest productions across various genres and formats
                 </p>
             </div>
 
-            <!-- Portfolio Grid - Responsive -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-                <!-- Project 1 -->
-                <div class="scroll-reveal group">
-                    <div class="aspect-[4/5] bg-gray-200 rounded-lg overflow-hidden relative mb-4 sm:mb-6">
-                        <div class="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent"></div>
-                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                            <div class="vintage-border p-3 sm:p-4">
-                                <span class="font-mono text-black text-xs sm:text-sm">[ PLAY ]</span>
-                            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 - Featured -->
+                <div class="md:col-span-2 lg:col-span-2 bg-white rounded-lg shadow-lg overflow-hidden card-hover fade-in">
+                    <div class="relative">
+                        <img src="/placeholder.svg?height=400&width=600" alt="Urban Stories" class="w-full h-64 object-cover">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <button class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-black">
+                                ▶
+                            </button>
                         </div>
-                        <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
-                            <span class="font-inter text-xs text-gray-600 uppercase tracking-wider">Commercial</span>
-                            <h3 class="font-playfair text-xl sm:text-2xl font-bold text-black mt-1">Urban Stories</h3>
-                        </div>
+                        <span class="badge absolute top-4 left-4">Commercial</span>
                     </div>
-                    <p class="font-inter text-sm sm:text-base text-gray-600 leading-relaxed">
-                        A compelling commercial campaign that captures the essence of modern urban life through intimate storytelling and cinematic visuals.
-                    </p>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-black mb-2">Urban Stories</h3>
+                        <p class="text-gray-600 mb-4">A compelling commercial campaign capturing modern urban life</p>
+                        <button class="text-black hover:text-primary transition-colors">View Project →</button>
+                    </div>
                 </div>
 
                 <!-- Project 2 -->
-                <div class="scroll-reveal group" style="animation-delay: 0.2s;">
-                    <div class="aspect-[4/5] bg-gray-200 rounded-lg overflow-hidden relative mb-4 sm:mb-6">
-                        <div class="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent"></div>
-                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                            <div class="vintage-border p-3 sm:p-4">
-                                <span class="font-mono text-black text-xs sm:text-sm">[ PLAY ]</span>
-                            </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover fade-in">
+                    <div class="relative">
+                        <img src="/placeholder.svg?height=400&width=600" alt="Voices Unheard" class="w-full h-64 object-cover">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <button class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-black">
+                                ▶
+                            </button>
                         </div>
-                        <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
-                            <span class="font-inter text-xs text-gray-600 uppercase tracking-wider">Documentary</span>
-                            <h3 class="font-playfair text-xl sm:text-2xl font-bold text-black mt-1">Voices Unheard</h3>
-                        </div>
+                        <span class="badge absolute top-4 left-4">Documentary</span>
                     </div>
-                    <p class="font-inter text-sm sm:text-base text-gray-600 leading-relaxed">
-                        An award-winning documentary series exploring untold stories from communities around the world with sensitivity and artistic vision.
-                    </p>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-black mb-2">Voices Unheard</h3>
+                        <p class="text-gray-600 mb-4">Award-winning documentary exploring untold stories</p>
+                        <button class="text-black hover:text-primary transition-colors">View Project →</button>
+                    </div>
                 </div>
 
                 <!-- Project 3 -->
-                <div class="scroll-reveal group md:col-span-2 lg:col-span-1" style="animation-delay: 0.4s;">
-                    <div class="aspect-[4/5] bg-gray-200 rounded-lg overflow-hidden relative mb-4 sm:mb-6">
-                        <div class="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent"></div>
-                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                            <div class="vintage-border p-3 sm:p-4">
-                                <span class="font-mono text-black text-xs sm:text-sm">[ PLAY ]</span>
-                            </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover fade-in">
+                    <div class="relative">
+                        <img src="/placeholder.svg?height=400&width=600" alt="Rhythm & Light" class="w-full h-64 object-cover">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <button class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-black">
+                                ▶
+                            </button>
                         </div>
-                        <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
-                            <span class="font-inter text-xs text-gray-600 uppercase tracking-wider">Music Video</span>
-                            <h3 class="font-playfair text-xl sm:text-2xl font-bold text-black mt-1">Rhythm & Light</h3>
-                        </div>
+                        <span class="badge absolute top-4 left-4">Music Video</span>
                     </div>
-                    <p class="font-inter text-sm sm:text-base text-gray-600 leading-relaxed">
-                        A visually stunning music video that seamlessly blends choreography with cinematic storytelling and innovative visual effects.
-                    </p>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-black mb-2">Rhythm & Light</h3>
+                        <p class="text-gray-600 mb-4">Visually stunning music video with innovative effects</p>
+                        <button class="text-black hover:text-primary transition-colors">View Project →</button>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover fade-in">
+                    <div class="relative">
+                        <img src="/placeholder.svg?height=400&width=600" alt="Corporate Vision" class="w-full h-64 object-cover">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <button class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-black">
+                                ▶
+                            </button>
+                        </div>
+                        <span class="badge absolute top-4 left-4">Corporate</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-black mb-2">Corporate Vision</h3>
+                        <p class="text-gray-600 mb-4">Professional corporate storytelling at its finest</p>
+                        <button class="text-black hover:text-primary transition-colors">View Project →</button>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Team Section -->
-    <section id="creators" class="py-16 sm:py-24 lg:py-32 bg-[#efcd44] text-black relative">
+    <section id="team" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Section Header -->
-            <div class="text-center mb-12 sm:mb-16 lg:mb-20 scroll-reveal">
-                <div class="relative inline-block">
-                    <div class="large-number font-playfair text-black">03</div>
-                    <h2 class="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 text-black">
-                        The Visionaries
-                    </h2>
+            <div class="text-center mb-16 fade-in">
+                <div class="inline-block px-4 py-2 rounded-full text-sm font-medium text-black mb-4" style="background-color: rgba(182, 154, 42, 0.2);">
+                    Our Team
                 </div>
-                <p class="font-inter text-lg sm:text-xl text-gray-800 max-w-3xl mx-auto">
-                    Meet the creative minds who bring stories to life
-                </p>
+                <h2 class="section-title text-4xl md:text-5xl font-bold text-black mb-6">The Visionaries</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Meet the creative minds who bring stories to life</p>
             </div>
 
-            <!-- Team Layout - Responsive -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Team Member 1 -->
-                <div class="text-center scroll-reveal">
-                    <div class="w-48 sm:w-56 lg:w-64 h-60 sm:h-72 lg:h-80 bg-gray-200 mx-auto mb-6 sm:mb-8 relative overflow-hidden rounded-lg">
-                        <div class="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent"></div>
-                        <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6">
-                            <h3 class="font-playfair text-xl sm:text-2xl font-bold text-black mb-1">Charlie Martinez</h3>
-                            <p class="font-inter text-gray-700 text-sm">Creative Director</p>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover fade-in">
+                    <div class="relative">
+                        <img src="/placeholder.svg?height=400&width=300" alt="Charlie Martinez" class="w-full h-80 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <h3 class="text-xl font-bold mb-1">Charlie Martinez</h3>
+                            <p class="text-primary text-sm font-medium">Creative Director</p>
                         </div>
                     </div>
-                    <p class="font-inter text-sm sm:text-base text-gray-800 leading-relaxed">
-                        Visionary filmmaker with 8+ years of experience crafting compelling narratives that resonate with audiences worldwide.
-                    </p>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Visionary filmmaker with 8+ years of experience crafting compelling narratives</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="badge">Direction</span>
+                            <span class="badge">Storytelling</span>
+                            <span class="badge">Creative Vision</span>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Team Member 2 -->
-                <div class="text-center scroll-reveal" style="animation-delay: 0.2s;">
-                    <div class="w-48 sm:w-56 lg:w-64 h-60 sm:h-72 lg:h-80 bg-gray-200 mx-auto mb-6 sm:mb-8 relative overflow-hidden rounded-lg">
-                        <div class="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent"></div>
-                        <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6">
-                            <h3 class="font-playfair text-xl sm:text-2xl font-bold text-black mb-1">Alex Stone</h3>
-                            <p class="font-inter text-gray-700 text-sm">Director of Photography</p>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover fade-in">
+                    <div class="relative">
+                        <img src="/placeholder.svg?height=400&width=300" alt="Alex Stone" class="w-full h-80 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <h3 class="text-xl font-bold mb-1">Alex Stone</h3>
+                            <p class="text-primary text-sm font-medium">Director of Photography</p>
                         </div>
                     </div>
-                    <p class="font-inter text-sm sm:text-base text-gray-800 leading-relaxed">
-                        Master of light and composition, bringing visual poetry to every frame with innovative cinematography techniques.
-                    </p>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Master of light and composition, bringing visual poetry to every frame</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="badge">Cinematography</span>
+                            <span class="badge">Lighting</span>
+                            <span class="badge">Visual Composition</span>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Team Member 3 -->
-                <div class="text-center scroll-reveal md:col-span-2 lg:col-span-1" style="animation-delay: 0.4s;">
-                    <div class="w-48 sm:w-56 lg:w-64 h-60 sm:h-72 lg:h-80 bg-gray-200 mx-auto mb-6 sm:mb-8 relative overflow-hidden rounded-lg">
-                        <div class="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent"></div>
-                        <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6">
-                            <h3 class="font-playfair text-xl sm:text-2xl font-bold text-black mb-1">Maya Rivers</h3>
-                            <p class="font-inter text-gray-700 text-sm">Head of Post-Production</p>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover fade-in">
+                    <div class="relative">
+                        <img src="/placeholder.svg?height=400&width=300" alt="Maya Rivers" class="w-full h-80 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <h3 class="text-xl font-bold mb-1">Maya Rivers</h3>
+                            <p class="text-primary text-sm font-medium">Head of Post-Production</p>
                         </div>
                     </div>
-                    <p class="font-inter text-sm sm:text-base text-gray-800 leading-relaxed">
-                        Transforms raw footage into compelling narratives through expert editing, color grading, and sound design.
-                    </p>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Transforms raw footage into compelling narratives through expert editing</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="badge">Editing</span>
+                            <span class="badge">Color Grading</span>
+                            <span class="badge">Sound Design</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="connect" class="py-16 sm:py-24 lg:py-32 bg-white relative">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Section Header -->
-            <div class="text-center mb-12 sm:mb-16 lg:mb-20 scroll-reveal">
-                <div class="relative inline-block">
-                    <div class="large-number font-playfair text-black">04</div>
-                    <h2 class="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-4 sm:mb-6">
-                        Let's Talk
-                    </h2>
+    <section id="contact" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <div class="inline-block px-4 py-2 rounded-full text-sm font-medium text-black mb-4" style="background-color: rgba(182, 154, 42, 0.2);">
+                    Get In Touch
                 </div>
-                <p class="font-inter text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
+                <h2 class="section-title text-4xl md:text-5xl font-bold text-black mb-6">Let's Create Together</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
                     Ready to bring your vision to life? We'd love to hear about your project.
                 </p>
             </div>
 
-            <!-- Contact Form -->
-            <div class="scroll-reveal">
-                <form id="contact-form" class="space-y-6 sm:space-y-8">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-                        <div>
-                            <input type="text" placeholder="Your Name" class="w-full bg-transparent border-b-2 border-gray-400 focus:border-black py-3 sm:py-4 text-black font-inter text-base sm:text-lg outline-none transition-colors duration-300" required>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Contact Info -->
+                <div class="space-y-6 fade-in">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-lg flex items-center justify-center" style="background-color: rgba(182, 154, 42, 0.2);">
+                                <span class="text-black text-xl">✉</span>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-black">Email</h3>
+                                <p class="text-gray-600">hello@charliemotion.com</p>
+                            </div>
                         </div>
-                        <div>
-                            <input type="email" placeholder="Email Address" class="w-full bg-transparent border-b-2 border-gray-400 focus:border-black py-3 sm:py-4 text-black font-inter text-base sm:text-lg outline-none transition-colors duration-300" required>
-                        </div>
                     </div>
-                    
-                    <div>
-                        <select class="w-full bg-white border-b-2 border-gray-400 focus:border-black py-3 sm:py-4 text-black font-inter text-base sm:text-lg outline-none transition-colors duration-300">
-                            <option>What type of project do you have in mind?</option>
-                            <option>Commercial</option>
-                            <option>Music Video</option>
-                            <option>Short Film</option>
-                            <option>Documentary</option>
-                            <option>Corporate Video</option>
-                            <option>Other</option>
-                        </select>
-                    </div>
-                    
-                    <div>
-                        <textarea rows="5" placeholder="Tell us about your vision..." class="w-full bg-transparent border-b-2 border-gray-400 focus:border-black py-3 sm:py-4 text-black font-inter text-base sm:text-lg outline-none transition-colors duration-300 resize-none" required></textarea>
-                    </div>
-                    
-                    <div class="text-center pt-6 sm:pt-8">
-                        <button type="submit" class="vintage-border px-12 sm:px-16 py-4 sm:py-6 font-inter font-medium text-black hover:bg-black hover:text-white transition-all duration-300 text-base sm:text-lg w-full sm:w-auto">
-                            Send Message
-                        </button>
-                    </div>
-                </form>
-            </div>
 
-            <!-- Contact Info -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 mt-16 sm:mt-24 text-center">
-                <div class="scroll-reveal">
-                    <h3 class="font-playfair text-xl sm:text-2xl font-bold text-black mb-3 sm:mb-4">Email</h3>
-                    <p class="font-inter text-gray-600 text-base sm:text-lg">hello@charliemotion.com</p>
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-lg flex items-center justify-center" style="background-color: rgba(182, 154, 42, 0.2);">
+                                <span class="text-black text-xl">📞</span>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-black">Phone</h3>
+                                <p class="text-gray-600">+1 (555) 123-FILM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-lg flex items-center justify-center" style="background-color: rgba(182, 154, 42, 0.2);">
+                                <span class="text-black text-xl">📍</span>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-black">Studio</h3>
+                                <p class="text-gray-600">Los Angeles, CA</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="scroll-reveal" style="animation-delay: 0.1s;">
-                    <h3 class="font-playfair text-xl sm:text-2xl font-bold text-black mb-3 sm:mb-4">Phone</h3>
-                    <p class="font-inter text-gray-600 text-base sm:text-lg">+1 (555) 123-FILM</p>
-                </div>
-                <div class="scroll-reveal" style="animation-delay: 0.2s;">
-                    <h3 class="font-playfair text-xl sm:text-2xl font-bold text-black mb-3 sm:mb-4">Studio</h3>
-                    <p class="font-inter text-gray-600 text-base sm:text-lg">Los Angeles, CA</p>
+
+                <!-- Contact Form -->
+                <div class="lg:col-span-2 fade-in">
+                    <div class="bg-white rounded-lg shadow-lg p-8">
+                        <form id="contact-form" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-black mb-2">Name</label>
+                                    <input type="text" class="form-input" placeholder="Your name" required>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-black mb-2">Email</label>
+                                    <input type="email" class="form-input" placeholder="your@email.com" required>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-black mb-2">Project Type</label>
+                                <select class="form-select" required>
+                                    <option value="">Select project type</option>
+                                    <option value="commercial">Commercial</option>
+                                    <option value="music-video">Music Video</option>
+                                    <option value="documentary">Documentary</option>
+                                    <option value="corporate">Corporate Video</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-black mb-2">Message</label>
+                                <textarea class="form-textarea" placeholder="Tell us about your vision..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-primary w-full">
+                                Send Message ✉
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Enhanced Footer -->
-    <footer class="bg-gray-100 relative">
-        <!-- Main Footer Content -->
-        <div class="py-16 sm:py-20 border-t border-gray-200">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-12">
-                    <!-- Company Info -->
-                    <div class="lg:col-span-2">
-                        <div class="flex items-center space-x-4 mb-6">
-                            <div class="w-16 h-16 border-2 border-black rounded-full flex items-center justify-center">
-                                <span class="font-playfair text-2xl font-bold">CM</span>
-                            </div>
-                            <div>
-                                <div class="font-playfair text-2xl sm:text-3xl font-bold text-black">
-                                    Charlie Motion Pictures
-                                </div>
-                                <div class="font-inter text-sm text-gray-600 uppercase tracking-wider">
-                                    Crafting Timeless Stories
-                                </div>
-                            </div>
+    <!-- Footer -->
+    <footer class="bg-gray-100 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
+                            <span class="text-black font-bold text-xl">▶</span>
                         </div>
-                        <p class="font-inter text-gray-600 leading-relaxed mb-6 max-w-md">
-                            We are passionate storytellers dedicated to creating compelling visual narratives that resonate with audiences worldwide through innovative filmmaking techniques.
-                        </p>
-                        
-                        <!-- Social Links -->
-                        <div class="flex space-x-4">
-                            <a href="#" class="w-12 h-12 border border-gray-400 rounded-full flex items-center justify-center text-gray-600 hover:text-black hover:border-black transition-all duration-300 group">
-                                <span class="text-sm group-hover:scale-110 transition-transform duration-300">f</span>
-                            </a>
-                            <a href="#" class="w-12 h-12 border border-gray-400 rounded-full flex items-center justify-center text-gray-600 hover:text-black hover:border-black transition-all duration-300 group">
-                                <span class="text-sm group-hover:scale-110 transition-transform duration-300">t</span>
-                            </a>
-                            <a href="#" class="w-12 h-12 border border-gray-400 rounded-full flex items-center justify-center text-gray-600 hover:text-black hover:border-black transition-all duration-300 group">
-                                <span class="text-sm group-hover:scale-110 transition-transform duration-300">i</span>
-                            </a>
-                            <a href="#" class="w-12 h-12 border border-gray-400 rounded-full flex items-center justify-center text-gray-600 hover:text-black hover:border-black transition-all duration-300 group">
-                                <span class="text-sm group-hover:scale-110 transition-transform duration-300">y</span>
-                            </a>
+                        <div>
+                            <div class="text-2xl font-bold text-black">Charlie Motion Pictures</div>
+                            <div class="text-sm text-gray-600 uppercase tracking-wider">Crafting Timeless Stories</div>
                         </div>
                     </div>
-
-                    <!-- Quick Links -->
-                    <div>
-                        <h3 class="font-playfair text-xl font-bold text-black mb-6">Quick Links</h3>
-                        <ul class="space-y-3">
-                            <li><a href="#about" class="font-inter text-gray-600 hover:text-black transition-colors duration-300">About Us</a></li>
-                            <li><a href="#portfolio" class="font-inter text-gray-600 hover:text-black transition-colors duration-300">Our Work</a></li>
-                            <li><a href="#creators" class="font-inter text-gray-600 hover:text-black transition-colors duration-300">Our Team</a></li>
-                            <li><a href="#connect" class="font-inter text-gray-600 hover:text-black transition-colors duration-300">Contact</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Services -->
-                    <div>
-                        <h3 class="font-playfair text-xl font-bold text-black mb-6">Services</h3>
-                        <ul class="space-y-3">
-                            <li><span class="font-inter text-gray-600">Commercial Production</span></li>
-                            <li><span class="font-inter text-gray-600">Documentary Films</span></li>
-                            <li><span class="font-inter text-gray-600">Music Videos</span></li>
-                            <li><span class="font-inter text-gray-600">Corporate Videos</span></li>
-                            <li><span class="font-inter text-gray-600">Post-Production</span></li>
-                        </ul>
+                    <p class="text-gray-600 leading-relaxed mb-6 max-w-md">
+                        We are passionate storytellers dedicated to creating compelling visual narratives that resonate with audiences worldwide.
+                    </p>
+                    
+                    <!-- Social Links -->
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-12 h-12 border border-gray-400 rounded-full flex items-center justify-center text-gray-600 hover:text-black hover:border-black transition-all">
+                            f
+                        </a>
+                        <a href="#" class="w-12 h-12 border border-gray-400 rounded-full flex items-center justify-center text-gray-600 hover:text-black hover:border-black transition-all">
+                            t
+                        </a>
+                        <a href="#" class="w-12 h-12 border border-gray-400 rounded-full flex items-center justify-center text-gray-600 hover:text-black hover:border-black transition-all">
+                            i
+                        </a>
+                        <a href="#" class="w-12 h-12 border border-gray-400 rounded-full flex items-center justify-center text-gray-600 hover:text-black hover:border-black transition-all">
+                            y
+                        </a>
                     </div>
                 </div>
 
-                <!-- Awards & Recognition -->
-                <div class="mt-12 pt-8 border-t border-gray-200">
-                    <div class="text-center">
-                        <h3 class="font-playfair text-xl font-bold text-black mb-6">Awards & Recognition</h3>
-                        <div class="flex flex-wrap justify-center items-center gap-8 opacity-60">
-                            <div class="font-inter text-sm text-gray-500">Cannes Film Festival</div>
-                            <div class="font-inter text-sm text-gray-500">•</div>
-                            <div class="font-inter text-sm text-gray-500">Sundance</div>
-                            <div class="font-inter text-sm text-gray-500">•</div>
-                            <div class="font-inter text-sm text-gray-500">SXSW</div>
-                            <div class="font-inter text-sm text-gray-500">•</div>
-                            <div class="font-inter text-sm text-gray-500">Tribeca</div>
-                        </div>
-                    </div>
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-bold text-black mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#about" class="text-gray-600 hover:text-black transition-colors">About Us</a></li>
+                        <li><a href="#portfolio" class="text-gray-600 hover:text-black transition-colors">Our Work</a></li>
+                        <li><a href="#team" class="text-gray-600 hover:text-black transition-colors">Our Team</a></li>
+                        <li><a href="#contact" class="text-gray-600 hover:text-black transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h3 class="text-xl font-bold text-black mb-6">Services</h3>
+                    <ul class="space-y-3">
+                        <li><span class="text-gray-600">Commercial Production</span></li>
+                        <li><span class="text-gray-600">Documentary Films</span></li>
+                        <li><span class="text-gray-600">Music Videos</span></li>
+                        <li><span class="text-gray-600">Corporate Videos</span></li>
+                        <li><span class="text-gray-600">Post-Production</span></li>
+                    </ul>
                 </div>
             </div>
-        </div>
 
-        <!-- Bottom Bar -->
-        <div class="bg-white py-6 border-t border-gray-200">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Bottom Bar -->
+            <div class="mt-12 pt-8 border-t border-gray-200">
                 <div class="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-                    <p class="font-inter text-gray-500 text-sm text-center sm:text-left">
-                        © 2024 Charlie Motion Pictures. All rights reserved.
-                    </p>
+                    <p class="text-gray-500 text-sm">© 2024 Charlie Motion Pictures. All rights reserved.</p>
                     <div class="flex space-x-6">
-                        <a href="#" class="font-inter text-gray-500 hover:text-black text-sm transition-colors duration-300">Privacy Policy</a>
-                        <a href="#" class="font-inter text-gray-500 hover:text-black text-sm transition-colors duration-300">Terms of Service</a>
+                        <a href="#" class="text-gray-500 hover:text-black text-sm transition-colors">Privacy Policy</a>
+                        <a href="#" class="text-gray-500 hover:text-black text-sm transition-colors">Terms of Service</a>
                     </div>
                 </div>
             </div>
@@ -680,40 +668,24 @@
     </footer>
 
     <script>
-        // Enhanced Mobile Menu Toggle
+        // Mobile Menu Toggle
         document.getElementById('mobile-menu-btn').addEventListener('click', function() {
             const mobileMenu = document.getElementById('mobile-menu');
             const line1 = document.getElementById('line1');
             const line2 = document.getElementById('line2');
             const line3 = document.getElementById('line3');
             
-            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('open');
             
-            // Animate hamburger to X
-            if (mobileMenu.classList.contains('hidden')) {
-                line1.style.transform = 'rotate(0deg) translateY(0)';
-                line2.style.opacity = '1';
-                line3.style.transform = 'rotate(0deg) translateY(0)';
-            } else {
+            if (mobileMenu.classList.contains('open')) {
                 line1.style.transform = 'rotate(45deg) translateY(6px)';
                 line2.style.opacity = '0';
                 line3.style.transform = 'rotate(-45deg) translateY(-6px)';
-            }
-        });
-
-        // Close mobile menu when clicking on links
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                const mobileMenu = document.getElementById('mobile-menu');
-                const line1 = document.getElementById('line1');
-                const line2 = document.getElementById('line2');
-                const line3 = document.getElementById('line3');
-                
-                mobileMenu.classList.add('hidden');
+            } else {
                 line1.style.transform = 'rotate(0deg) translateY(0)';
                 line2.style.opacity = '1';
                 line3.style.transform = 'rotate(0deg) translateY(0)';
-            });
+            }
         });
 
         // Smooth Scrolling
@@ -730,39 +702,27 @@
             });
         });
 
+        // Word Cycling Animation
+        const words = ['Stories', 'Dreams', 'Visions', 'Moments'];
+        let currentWordIndex = 0;
+        const cyclingWord = document.getElementById('cycling-word');
+
+        setInterval(() => {
+            currentWordIndex = (currentWordIndex + 1) % words.length;
+            cyclingWord.textContent = words[currentWordIndex];
+        }, 2000);
+
         // Scroll Reveal Animation
         function revealOnScroll() {
-            const reveals = document.querySelectorAll('.scroll-reveal, .slide-in-left, .slide-in-right');
+            const reveals = document.querySelectorAll('.fade-in');
             
             reveals.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
                 const elementVisible = 150;
                 
                 if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('revealed');
+                    element.classList.add('visible');
                 }
-            });
-        }
-
-        // Counter Animation
-        function animateCounters() {
-            const counters = document.querySelectorAll('[data-count]');
-            
-            counters.forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-count'));
-                const duration = 2000;
-                const step = target / (duration / 16);
-                let current = 0;
-                
-                const timer = setInterval(() => {
-                    current += step;
-                    if (current >= target) {
-                        counter.textContent = target;
-                        clearInterval(timer);
-                    } else {
-                        counter.textContent = Math.floor(current);
-                    }
-                }, 16);
             });
         }
 
@@ -771,21 +731,19 @@
             e.preventDefault();
             
             const button = this.querySelector('button[type="submit"]');
-            const originalText = button.textContent;
+            const originalText = button.innerHTML;
             
-            button.textContent = 'Sending...';
+            button.innerHTML = 'Sending...';
             button.disabled = true;
             
             setTimeout(() => {
-                button.textContent = 'Message Sent!';
-                button.style.background = 'black';
-                button.style.color = 'white';
+                button.innerHTML = 'Message Sent! ✓';
+                button.style.backgroundColor = '#22c55e';
                 
                 setTimeout(() => {
-                    button.textContent = originalText;
+                    button.innerHTML = originalText;
                     button.disabled = false;
-                    button.style.background = '';
-                    button.style.color = '';
+                    button.style.backgroundColor = '#B69A2A';
                     this.reset();
                 }, 2000);
             }, 1500);
@@ -794,31 +752,18 @@
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             revealOnScroll();
-            
-            const aboutSection = document.querySelector('#about');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateCounters();
-                        observer.unobserve(entry.target);
-                    }
-                });
-                });
-            observer.observe(aboutSection);
         });
 
         // Scroll Events
         window.addEventListener('scroll', revealOnScroll);
 
-        // Enhanced Navbar Background on Scroll
+        // Navbar Background on Scroll
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 100) {
                 navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-                navbar.style.backdropFilter = 'blur(20px)';
             } else {
                 navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-                navbar.style.backdropFilter = 'blur(10px)';
             }
         });
     </script>
