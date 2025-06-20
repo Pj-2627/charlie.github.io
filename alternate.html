@@ -4,42 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Charlie Motion Pictures - Crafting timeless stories through the art of cinema.">
-    <title>Charlie Motion Pictures - Alternate</title>
+    <title>Charlie Motion Pictures</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="public/favicon.png">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
+        .font-fraunces { font-family: 'Fraunces', serif; }
         .font-inter { font-family: 'Inter', sans-serif; }
         
-        /* Custom Colors for Alternating Theme */
-        .bg-primary { background-color: #B69A2A; }
-        .text-primary { color: #B69A2A; }
-        .border-primary { border-color: #B69A2A; }
-        .hover\:bg-primary:hover { background-color: #B69A2A; }
-        .hover\:text-primary:hover { color: #B69A2A; }
+        /* Custom Colors */
+        .bg-golden { background-color: #FAE588; }
+        .bg-cream { background-color: #FDF8E1; }
+        .text-golden { color: #FAE588; }
+        .border-golden { border-color: #FAE588; }
         
-        /* Section-specific colors */
-        .section-yellow {
-            background-color: #B69A2A;
-            color: #2d2d2d;
-        }
-        
-        .section-white {
-            background-color: #ffffff;
-            color: #2d2d2d;
-        }
-        
-        /* Animations */
+        /* Smooth Animations */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.6s ease;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .fade-in.visible {
@@ -47,315 +39,270 @@
             transform: translateY(0);
         }
         
-        .word-cycle {
-            display: inline-block;
-            min-width: 200px;
-            text-align: left;
+        .slide-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .slide-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Modern Button Hover */
+        .btn-modern {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-modern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-modern:hover::before {
+            left: 100%;
         }
         
         /* Card Hover Effects */
         .card-hover {
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
         
         /* Mobile Menu Animation */
         .mobile-menu {
             transform: translateX(-100%);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .mobile-menu.open {
             transform: translateX(0);
         }
         
-        /* Button Styles for White Sections */
-        .btn-primary-white {
-            background-color: #B69A2A;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 6px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #FAE588;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #E6D078;
         }
         
-        .btn-primary-white:hover {
-            background-color: #9d8424;
-            transform: translateY(-2px);
-        }
-        
-        .btn-secondary-white {
-            background-color: #2d2d2d;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 6px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn-secondary-white:hover {
-            background-color: #1a1a1a;
-            transform: translateY(-2px);
-        }
-        
-        .btn-outline-white {
-            background-color: transparent;
-            color: #B69A2A;
-            padding: 12px 24px;
-            border: 2px solid #B69A2A;
-            border-radius: 6px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .btn-outline-white:hover {
-            background-color: #B69A2A;
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        /* Button Styles for Yellow Sections */
-        .btn-dark-yellow {
-            background-color: #2d2d2d;
-            color: #faf8f3;
-            padding: 12px 24px;
-            border-radius: 6px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn-dark-yellow:hover {
-            background-color: #1a1a1a;
-            transform: translateY(-2px);
-        }
-        
-        .btn-outline-yellow {
-            background-color: transparent;
-            color: #2d2d2d;
-            padding: 12px 24px;
-            border: 2px solid #2d2d2d;
-            border-radius: 6px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .btn-outline-yellow:hover {
-            background-color: #2d2d2d;
-            color: #faf8f3;
-            transform: translateY(-2px);
-        }
-        
-        /* Form Styles */
-        .form-input {
-            width: 100%;
-            padding: 12px 16px;
-            border: 2px solid #e5e7eb;
-            border-radius: 6px;
-            font-size: 16px;
-            transition: border-color 0.3s ease;
-            background-color: white;
-            color: #2d2d2d;
-        }
-        
-        .form-input:focus {
-            outline: none;
-            border-color: #B69A2A;
-        }
-        
-        .form-textarea {
-            width: 100%;
-            padding: 12px 16px;
-            border: 2px solid #e5e7eb;
-            border-radius: 6px;
-            font-size: 16px;
-            transition: border-color 0.3s ease;
-            resize: vertical;
-            min-height: 120px;
-            background-color: white;
-            color: #2d2d2d;
-        }
-        
-        .form-textarea:focus {
-            outline: none;
-            border-color: #B69A2A;
-        }
-        
-        .form-select {
-            width: 100%;
-            padding: 12px 16px;
-            border: 2px solid #e5e7eb;
-            border-radius: 6px;
-            font-size: 16px;
-            transition: border-color 0.3s ease;
-            background-color: white;
-            color: #2d2d2d;
-        }
-        
-        .form-select:focus {
-            outline: none;
-            border-color: #B69A2A;
+        /* Word Cycling Animation */
+        .word-cycle {
+            display: inline-block;
+            min-width: 200px;
+            text-align: left;
         }
         
         /* Badge Styles */
-        .badge-white {
+        .badge-golden {
             display: inline-block;
-            padding: 4px 12px;
-            background-color: rgba(182, 154, 42, 0.2);
-            color: #2d2d2d;
+            padding: 6px 16px;
+            background-color: rgba(250, 229, 136, 0.2);
+            color: #8B7355;
             border-radius: 20px;
             font-size: 12px;
-            font-weight: 500;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
-        .badge-yellow {
+        .badge-dark {
             display: inline-block;
-            padding: 4px 12px;
+            padding: 6px 16px;
             background-color: rgba(45, 45, 45, 0.9);
-            color: #faf8f3;
+            color: #FDF8E1;
             border-radius: 20px;
             font-size: 12px;
-            font-weight: 500;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
-        /* Card styles */
-        .card-white {
-            background-color: white;
-            color: #2d2d2d;
+        /* Charlie Chaplin Hat Animation */
+        .chaplin-hat {
+            position: absolute;
+            width: 80px;
+            height: 60px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -200px);
+            opacity: 0;
+            z-index: 5;
+            animation: flyInHat 3s ease-out forwards;
+            animation-delay: 1s;
         }
         
-        .card-dark-on-yellow {
-            background-color: rgba(45, 45, 45, 0.95);
-            color: #faf8f3;
-        }
-        
-        .card-light-on-yellow {
-            background-color: rgba(255, 255, 255, 0.95);
-            color: #2d2d2d;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 3rem;
+        @keyframes flyInHat {
+            0% {
+                transform: translate(-300px, -400px) rotate(-45deg) scale(0.3);
+                opacity: 0;
             }
-            
-            .section-title {
-                font-size: 2.5rem;
+            50% {
+                transform: translate(-150px, -300px) rotate(-20deg) scale(0.7);
+                opacity: 0.8;
             }
+            80% {
+                transform: translate(-50%, -180px) rotate(5deg) scale(1.1);
+                opacity: 1;
+            }
+            90% {
+                transform: translate(-50%, -190px) rotate(-2deg) scale(0.95);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -180px) rotate(0deg) scale(1);
+                opacity: 1;
+            }
+        }
+        
+        /* Hat floating animation after landing */
+        .chaplin-hat.landed {
+            animation: floatHat 4s ease-in-out infinite;
+        }
+        
+        @keyframes floatHat {
+            0%, 100% {
+                transform: translate(-50%, -180px) rotate(0deg);
+            }
+            25% {
+                transform: translate(-50%, -185px) rotate(1deg);
+            }
+            50% {
+                transform: translate(-50%, -190px) rotate(0deg);
+            }
+            75% {
+                transform: translate(-50%, -185px) rotate(-1deg);
+            }
+        }
+        
+        /* Hat SVG styling */
+        .hat-svg {
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        }
+        
+        /* Title animation delay */
+        .title-delayed {
+            animation-delay: 2s;
         }
     </style>
 </head>
 
-<body class="font-inter">
+<body class="font-inter antialiased">
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300">
-        <div class="bg-white/95 backdrop-blur-md shadow-sm">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between items-center h-20">
-                    <!-- Logo -->
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-                            <span class="text-white font-bold">▶</span>
-                        </div>
-                        <div>
-                            <div class="font-bold text-xl text-gray-900">Charlie Motion</div>
-                            <div class="text-xs text-gray-600 uppercase tracking-wider">Pictures</div>
-                        </div>
-                    </div>
-
-                    <!-- Desktop Menu -->
-                    <div class="hidden lg:flex items-center space-x-8">
-                        <a href="#home" class="text-gray-700 hover:text-gray-900 transition-colors">Home</a>
-                        <a href="#about" class="text-gray-700 hover:text-gray-900 transition-colors">About</a>
-                        <a href="#portfolio" class="text-gray-700 hover:text-gray-900 transition-colors">Work</a>
-                        <a href="#team" class="text-gray-700 hover:text-gray-900 transition-colors">Team</a>
-                        <button class="btn-primary-white">Contact Us</button>
-                    </div>
-
-                    <!-- Mobile Menu Button -->
-                    <button id="mobile-menu-btn" class="lg:hidden p-2">
-                        <div class="w-6 h-6 flex flex-col justify-center space-y-1">
-                            <span class="block w-6 h-0.5 bg-gray-900 transition-all" id="line1"></span>
-                            <span class="block w-6 h-0.5 bg-gray-900 transition-all" id="line2"></span>
-                            <span class="block w-6 h-0.5 bg-gray-900 transition-all" id="line3"></span>
-                        </div>
-                    </button>
-                </div>
-
-                <!-- Mobile Menu -->
-                <div id="mobile-menu" class="lg:hidden mobile-menu bg-white/98 backdrop-blur-md border-t">
-                    <div class="px-4 py-6 space-y-4">
-                        <a href="#home" class="block py-2 text-gray-700 hover:text-gray-900">Home</a>
-                        <a href="#about" class="block py-2 text-gray-700 hover:text-gray-900">About</a>
-                        <a href="#portfolio" class="block py-2 text-gray-700 hover:text-gray-900">Work</a>
-                        <a href="#team" class="block py-2 text-gray-700 hover:text-gray-900">Team</a>
-                        <button class="btn-primary-white w-full">Contact Us</button>
+    <nav class="fixed w-full top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <img src="public/logo.png" alt="Charlie Motion Pictures" class="h-12">
+                    <div>
+                        <div class="font-fraunces font-bold text-xl text-gray-900">Charlie Motion</div>
+                        <div class="text-xs text-gray-600 uppercase tracking-wider">Pictures</div>
                     </div>
                 </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-600 hover:text-gray-900 transition-colors font-medium">Home</a>
+                    <a href="#about" class="text-gray-600 hover:text-gray-900 transition-colors font-medium">About</a>
+                    <a href="#work" class="text-gray-600 hover:text-gray-900 transition-colors font-medium">Work</a>
+                    <a href="#team" class="text-gray-600 hover:text-gray-900 transition-colors font-medium">Team</a>
+                    <a href="#contact" class="bg-gray-900 text-white px-6 py-2 rounded-full hover:bg-gray-800 transition-colors btn-modern">Contact</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden flex flex-col space-y-1">
+                    <span class="w-6 h-0.5 bg-gray-900 transition-all duration-300" id="line1"></span>
+                    <span class="w-6 h-0.5 bg-gray-900 transition-all duration-300" id="line2"></span>
+                    <span class="w-6 h-0.5 bg-gray-900 transition-all duration-300" id="line3"></span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu fixed inset-y-0 left-0 w-full bg-white z-40 md:hidden">
+            <div class="flex flex-col h-full pt-24 px-6">
+                <a href="#home" class="py-4 text-xl font-medium border-b border-gray-100 mobile-link">Home</a>
+                <a href="#about" class="py-4 text-xl font-medium border-b border-gray-100 mobile-link">About</a>
+                <a href="#work" class="py-4 text-xl font-medium border-b border-gray-100 mobile-link">Work</a>
+                <a href="#team" class="py-4 text-xl font-medium border-b border-gray-100 mobile-link">Team</a>
+                <a href="#contact" class="py-4 text-xl font-medium mobile-link">Contact</a>
             </div>
         </div>
     </nav>
-
-    <!-- Hero Section - Yellow Background -->
-    <section id="home" class="section-yellow min-h-screen flex items-center justify-center relative overflow-hidden">
+    
+    <!-- Hero Section - Golden Background -->
+    <section id="home" class="bg-golden min-h-screen flex items-center justify-center relative overflow-hidden">
         <!-- Background Elements -->
-        <div class="absolute top-20 right-20 w-72 h-72 rounded-full blur-3xl opacity-20 bg-black"></div>
-        <div class="absolute bottom-20 left-20 w-96 h-96 rounded-full blur-3xl opacity-10 bg-black"></div>
+        <div class="absolute top-20 right-20 w-72 h-72 rounded-full blur-3xl opacity-20 bg-gray-900"></div>
+        <div class="absolute bottom-20 left-20 w-96 h-96 rounded-full blur-3xl opacity-10 bg-gray-900"></div>
 
-        <div class="relative z-10 text-center px-4 max-w-6xl mx-auto">
-            <div class="mb-8">
-                <h1 class="hero-title text-6xl md:text-8xl lg:text-9xl font-bold mb-4">Charlie</h1>
+        <!-- Charlie Chaplin Hat Animation -->
+        <div class="chaplin-hat" id="chaplinHat">
+            <img class="hat-svg w-full" src="public/hat.png" alt="Charlie Chaplin Hat">
+        </div>
+
+        <div class="relative z-10 text-center pt-16 px-4 max-w-6xl mx-auto">
+            <div class="mb-8 fade-in title-delayed">
+                <h1 class="font-fraunces text-6xl md:text-8xl lg:text-9xl font-bold mb-4 text-gray-900">Charlie</h1>
                 <div class="flex items-center justify-center space-x-4 mb-6">
-                    <div class="h-px bg-black w-16"></div>
-                    <h2 class="text-2xl md:text-3xl opacity-80 font-light">Motion Pictures</h2>
-                    <div class="h-px bg-black w-16"></div>
+                    <div class="h-px bg-gray-900 w-16"></div>
+                    <h2 class="text-2xl md:text-3xl opacity-80 font-light text-gray-900">Motion Pictures</h2>
+                    <div class="h-px bg-gray-900 w-16"></div>
                 </div>
             </div>
 
-            <div class="mb-12">
-                <p class="text-xl md:text-2xl mb-4">
-                    Crafting Cinematic <span id="cycling-word" class="text-black font-bold word-cycle">Stories</span>
+            <div class="mb-12 fade-in title-delayed">
+                <p class="text-xl md:text-2xl mb-4 text-gray-900">
+                    Crafting Cinematic <span id="cycling-word" class="text-gray-900 font-bold word-cycle">Stories</span>
                 </p>
-                <p class="text-lg opacity-80 max-w-2xl mx-auto">
+                <p class="text-lg opacity-80 max-w-2xl mx-auto text-gray-700">
                     Where passion meets precision in visual storytelling
                 </p>
             </div>
 
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <button class="btn-dark-yellow">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center fade-in title-delayed">
+                <button class="bg-gray-900 text-white px-8 py-4 rounded-full hover:bg-gray-800 transition-all btn-modern font-medium">
                     View Our Work →
                 </button>
-                <button class="btn-outline-yellow">
+                <button class="border-2 border-gray-900 text-gray-900 px-8 py-4 rounded-full hover:bg-gray-900 hover:text-white transition-all btn-modern font-medium">
                     ▶ Watch Reel
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- About Section - White Background -->
-    <section id="about" class="section-white py-24">
+    <!-- About Section - Cream Background -->
+    <section id="about" class="bg-cream py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <!-- Left Content -->
                 <div class="fade-in">
                     <div class="mb-8">
-                        <div class="inline-block px-4 py-2 rounded-full text-sm font-medium mb-4 badge-white">
-                            About Us
-                        </div>
-                        <h2 class="section-title text-4xl md:text-5xl font-bold mb-6">We Create Magic Through Motion</h2>
-                        <p class="text-lg text-gray-600 leading-relaxed">
+                        <div class="badge-golden mb-4">About Us</div>
+                        <h2 class="font-fraunces text-4xl md:text-5xl font-bold mb-6 text-gray-900">We Create Magic Through Motion</h2>
+                        <p class="text-lg text-gray-700 leading-relaxed">
                             Charlie Motion Pictures stands at the forefront of contemporary filmmaking, where artistic vision meets
                             technical excellence. We don't just create videos – we craft experiences that move, inspire, and
                             transform audiences.
@@ -364,48 +311,48 @@
 
                     <div class="space-y-4">
                         <div class="flex items-start space-x-4">
-                            <div class="w-2 h-2 bg-primary rounded-full mt-3"></div>
-                            <p class="text-gray-600">Classical cinematic techniques with innovative storytelling methods</p>
+                            <div class="w-2 h-2 bg-gray-900 rounded-full mt-3"></div>
+                            <p class="text-gray-700">Classical cinematic techniques with innovative storytelling methods</p>
                         </div>
                         <div class="flex items-start space-x-4">
-                            <div class="w-2 h-2 bg-primary rounded-full mt-3"></div>
-                            <p class="text-gray-600">Each project resonates with authenticity and emotional depth</p>
+                            <div class="w-2 h-2 bg-gray-900 rounded-full mt-3"></div>
+                            <p class="text-gray-700">Each project resonates with authenticity and emotional depth</p>
                         </div>
                         <div class="flex items-start space-x-4">
-                            <div class="w-2 h-2 bg-primary rounded-full mt-3"></div>
-                            <p class="text-gray-600">Award-winning team of creative professionals</p>
+                            <div class="w-2 h-2 bg-gray-900 rounded-full mt-3"></div>
+                            <p class="text-gray-700">Award-winning team of creative professionals</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Right Stats -->
                 <div class="grid grid-cols-2 gap-6 fade-in">
-                    <div class="card-white rounded-lg shadow-lg p-6 text-center card-hover">
-                        <div class="w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4" style="background-color: rgba(182, 154, 42, 0.2);">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center card-hover">
+                        <div class="w-12 h-12 bg-golden rounded-lg flex items-center justify-center mx-auto mb-4">
                             <span class="text-gray-900 text-xl">🎬</span>
                         </div>
-                        <div class="text-3xl font-bold mb-2">150+</div>
+                        <div class="text-3xl font-bold mb-2 text-gray-900" data-count="150">0</div>
                         <div class="text-sm text-gray-600">Projects</div>
                     </div>
-                    <div class="card-white rounded-lg shadow-lg p-6 text-center card-hover">
-                        <div class="w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4" style="background-color: rgba(182, 154, 42, 0.2);">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center card-hover">
+                        <div class="w-12 h-12 bg-golden rounded-lg flex items-center justify-center mx-auto mb-4">
                             <span class="text-gray-900 text-xl">🏆</span>
                         </div>
-                        <div class="text-3xl font-bold mb-2">25+</div>
+                        <div class="text-3xl font-bold mb-2 text-gray-900" data-count="25">0</div>
                         <div class="text-sm text-gray-600">Awards</div>
                     </div>
-                    <div class="card-white rounded-lg shadow-lg p-6 text-center card-hover">
-                        <div class="w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4" style="background-color: rgba(182, 154, 42, 0.2);">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center card-hover">
+                        <div class="w-12 h-12 bg-golden rounded-lg flex items-center justify-center mx-auto mb-4">
                             <span class="text-gray-900 text-xl">👥</span>
                         </div>
-                        <div class="text-3xl font-bold mb-2">100+</div>
+                        <div class="text-3xl font-bold mb-2 text-gray-900" data-count="100">0</div>
                         <div class="text-sm text-gray-600">Happy Clients</div>
                     </div>
-                    <div class="card-white rounded-lg shadow-lg p-6 text-center card-hover">
-                        <div class="w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4" style="background-color: rgba(182, 154, 42, 0.2);">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center card-hover">
+                        <div class="w-12 h-12 bg-golden rounded-lg flex items-center justify-center mx-auto mb-4">
                             <span class="text-gray-900 text-xl">⚡</span>
                         </div>
-                        <div class="text-3xl font-bold mb-2">8+</div>
+                        <div class="text-3xl font-bold mb-2 text-gray-900" data-count="12">0</div>
                         <div class="text-sm text-gray-600">Years Experience</div>
                     </div>
                 </div>
@@ -413,179 +360,146 @@
         </div>
     </section>
 
-    <!-- Portfolio Section - Yellow Background -->
-    <section id="portfolio" class="section-yellow py-24">
+    <!-- Portfolio Section - Golden Background -->
+    <section id="work" class="bg-golden py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
-                <div class="inline-block px-4 py-2 rounded-full text-sm font-medium mb-4 badge-yellow">
-                    Our Work
-                </div>
-                <h2 class="section-title text-4xl md:text-5xl font-bold mb-6">Portfolio Showcase</h2>
-                <p class="text-lg opacity-80 max-w-2xl mx-auto">
+                <div class="badge-dark mb-4">Our Work</div>
+                <h2 class="font-fraunces text-4xl md:text-5xl font-bold mb-6 text-gray-900">Portfolio Showcase</h2>
+                <p class="text-lg opacity-80 max-w-2xl mx-auto text-gray-700">
                     A collection of our finest productions across various genres and formats
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 - Featured -->
-                <div class="md:col-span-2 lg:col-span-2 card-light-on-yellow rounded-lg shadow-xl overflow-hidden card-hover fade-in">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <!-- Project 1 - ASUR 2 -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover fade-in">
                     <div class="relative">
-                        <img src="/placeholder.svg?height=400&width=600" alt="Urban Stories" class="w-full h-64 object-cover">
+                        <img src="public/work/asur.jpeg" alt="ASUR - 2" class="w-full h-64 object-cover">
                         <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <button class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white">
+                            <button class="w-12 h-12 bg-golden rounded-full flex items-center justify-center text-gray-900">
                                 ▶
                             </button>
                         </div>
-                        <span class="badge-yellow absolute top-4 left-4">Commercial</span>
+                        <span class="badge-dark absolute top-4 left-4">Web Series</span>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Urban Stories</h3>
-                        <p class="text-gray-600 mb-4">A compelling commercial campaign capturing modern urban life</p>
-                        <button class="text-gray-900 hover:text-primary transition-colors font-medium">View Project →</button>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900">ASUR - 2</h3>
+                        <p class="text-gray-600 mb-4">Line Producer for this gripping psychological thriller series</p>
                     </div>
                 </div>
 
-                <!-- Project 2 -->
-                <div class="card-light-on-yellow rounded-lg shadow-xl overflow-hidden card-hover fade-in">
+                <!-- Project 2 - Madam Chief Minister -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover fade-in">
                     <div class="relative">
-                        <img src="/placeholder.svg?height=400&width=600" alt="Voices Unheard" class="w-full h-64 object-cover">
+                        <img src="public/work/MCM.jpeg" alt="MADAM CHIEF MINISTER" class="w-full h-64 object-cover">
                         <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <button class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white">
+                            <button class="w-12 h-12 bg-golden rounded-full flex items-center justify-center text-gray-900">
                                 ▶
                             </button>
                         </div>
-                        <span class="badge-yellow absolute top-4 left-4">Documentary</span>
+                        <span class="badge-dark absolute top-4 left-4">Feature Film</span>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Voices Unheard</h3>
-                        <p class="text-gray-600 mb-4">Award-winning documentary exploring untold stories</p>
-                        <button class="text-gray-900 hover:text-primary transition-colors font-medium">View Project →</button>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900">Madam Chief Minister</h3>
+                        <p class="text-gray-600 mb-4">Line Producer for this powerful political drama</p>
                     </div>
                 </div>
 
-                <!-- Project 3 -->
-                <div class="card-light-on-yellow rounded-lg shadow-xl overflow-hidden card-hover fade-in">
+                <!-- Project 3 - ZIBAH -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover fade-in">
                     <div class="relative">
-                        <img src="/placeholder.svg?height=400&width=600" alt="Rhythm & Light" class="w-full h-64 object-cover">
+                        <img src="public/work/zibah.jpeg" alt="ZIBAH" class="w-full h-64 object-cover">
                         <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <button class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white">
+                            <button class="w-12 h-12 bg-golden rounded-full flex items-center justify-center text-gray-900">
                                 ▶
                             </button>
                         </div>
-                        <span class="badge-yellow absolute top-4 left-4">Music Video</span>
+                        <span class="badge-dark absolute top-4 left-4">Short Film</span>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Rhythm & Light</h3>
-                        <p class="text-gray-600 mb-4">Visually stunning music video with innovative effects</p>
-                        <button class="text-gray-900 hover:text-primary transition-colors font-medium">View Project →</button>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900">ZIBAH</h3>
+                        <p class="text-gray-600 mb-4">Producer for this compelling short film narrative</p>
                     </div>
                 </div>
 
-                <!-- Project 4 -->
-                <div class="card-light-on-yellow rounded-lg shadow-xl overflow-hidden card-hover fade-in">
+                <!-- Project 4 - PUSHTAINI -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover fade-in">
                     <div class="relative">
-                        <img src="/placeholder.svg?height=400&width=600" alt="Corporate Vision" class="w-full h-64 object-cover">
+                        <img src="public/work/pushtaini.avif" alt="PUSHTAINI" class="w-full h-64 object-cover">
                         <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <button class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white">
+                            <button class="w-12 h-12 bg-golden rounded-full flex items-center justify-center text-gray-900">
                                 ▶
                             </button>
                         </div>
-                        <span class="badge-yellow absolute top-4 left-4">Corporate</span>
+                        <span class="badge-dark absolute top-4 left-4">Feature Film</span>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Corporate Vision</h3>
-                        <p class="text-gray-600 mb-4">Professional corporate storytelling at its finest</p>
-                        <button class="text-gray-900 hover:text-primary transition-colors font-medium">View Project →</button>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900">PUSHTAINI</h3>
+                        <p class="text-gray-600 mb-4">Line Producer for this cultural drama</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Team Section - White Background -->
-    <section id="team" class="section-white py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Team Section - Cream Background -->
+    <section id="team" class="bg-cream py-24">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
-                <div class="inline-block px-4 py-2 rounded-full text-sm font-medium mb-4 badge-white">
-                    Our Team
-                </div>
-                <h2 class="section-title text-4xl md:text-5xl font-bold mb-6">The Visionaries</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Meet the creative minds who bring stories to life</p>
+                <div class="badge-golden mb-4">Our Team</div>
+                <h2 class="font-fraunces text-4xl md:text-5xl font-bold mb-6 text-gray-900">The Visionaries</h2>
+                <p class="text-xl text-gray-700 max-w-2xl mx-auto">
+                    Passionate creators dedicated to visual excellence
+                </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
                 <!-- Team Member 1 -->
-                <div class="card-white rounded-lg shadow-lg overflow-hidden card-hover fade-in">
-                    <div class="relative">
-                        <img src="/placeholder.svg?height=400&width=300" alt="Charlie Martinez" class="w-full h-80 object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                        <div class="absolute bottom-4 left-4 right-4 text-white">
-                            <h3 class="text-xl font-bold mb-1">Charlie Martinez</h3>
-                            <p class="text-primary text-sm font-medium">Creative Director</p>
-                        </div>
+                <div class="text-center slide-up" style="animation-delay: 0.2s;">
+                    <div class="w-48 h-48 bg-white rounded-full mx-auto mb-6 overflow-hidden shadow-lg">
+                        <img src="public/team/punjal.jpeg" alt="Punjal Jain" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6">
-                        <p class="text-gray-600 mb-4">Visionary filmmaker with 8+ years of experience crafting compelling narratives</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="badge-white">Direction</span>
-                            <span class="badge-white">Storytelling</span>
-                            <span class="badge-white">Creative Vision</span>
-                        </div>
-                    </div>
+                    <h3 class="font-fraunces text-xl font-semibold mb-2 text-gray-900">USHA TIWARI PANDEY</h3>
+                    <p class="text-golden mb-4 font-medium">Producer</p>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Storytelling architect skilled in production and design with experience across multiple formats.
+                    </p>
                 </div>
-
                 <!-- Team Member 2 -->
-                <div class="card-white rounded-lg shadow-lg overflow-hidden card-hover fade-in">
-                    <div class="relative">
-                        <img src="/placeholder.svg?height=400&width=300" alt="Alex Stone" class="w-full h-80 object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                        <div class="absolute bottom-4 left-4 right-4 text-white">
-                            <h3 class="text-xl font-bold mb-1">Alex Stone</h3>
-                            <p class="text-primary text-sm font-medium">Director of Photography</p>
-                        </div>
+                <div class="text-center slide-up">
+                    <div class="w-48 h-48 bg-white rounded-full mx-auto mb-6 overflow-hidden shadow-lg">
+                        <img src="public/team/vivek.png" alt="Vivek Agrawal" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6">
-                        <p class="text-gray-600 mb-4">Master of light and composition, bringing visual poetry to every frame</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="badge-white">Cinematography</span>
-                            <span class="badge-white">Lighting</span>
-                            <span class="badge-white">Visual Composition</span>
-                        </div>
-                    </div>
+                    <h3 class="font-fraunces text-xl font-semibold mb-2 text-gray-900">Vivek Agrawal</h3>
+                    <p class="text-golden mb-4 font-medium">Producer</p>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Visionary filmmaker with 15+ years crafting compelling narratives for global audiences.
+                    </p>
                 </div>
 
                 <!-- Team Member 3 -->
-                <div class="card-white rounded-lg shadow-lg overflow-hidden card-hover fade-in">
-                    <div class="relative">
-                        <img src="/placeholder.svg?height=400&width=300" alt="Maya Rivers" class="w-full h-80 object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                        <div class="absolute bottom-4 left-4 right-4 text-white">
-                            <h3 class="text-xl font-bold mb-1">Maya Rivers</h3>
-                            <p class="text-primary text-sm font-medium">Head of Post-Production</p>
-                        </div>
+                <div class="text-center slide-up" style="animation-delay: 0.1s;">
+                    <div class="w-48 h-48 bg-white rounded-full mx-auto mb-6 overflow-hidden shadow-lg">
+                        <img src="public/team/Archit.jpeg" alt="Archit Agrawal" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6">
-                        <p class="text-gray-600 mb-4">Transforms raw footage into compelling narratives through expert editing</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="badge-white">Editing</span>
-                            <span class="badge-white">Color Grading</span>
-                            <span class="badge-white">Sound Design</span>
-                        </div>
-                    </div>
+                    <h3 class="font-fraunces text-xl font-semibold mb-2 text-gray-900">ROOPAL KHANDELWAl</h3>
+                    <p class="text-golden mb-4 font-medium">line producer</p>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Experienced in film & web production, commercials, and live events. Worked with top banners like Maddock Films, NFDC, SVF, and Pooja Entertainment on projects like Skyforce, Azaad, Mission Raniganj, and Chiraiyya. Skilled in coordination, budgeting, logistics, and managing shoots across India..
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section - Yellow Background -->
-    <section id="contact" class="section-yellow py-24">
+    <!-- Contact Section - Golden Background -->
+    <section id="contact" class="bg-golden py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
-                <div class="inline-block px-4 py-2 rounded-full text-sm font-medium mb-4 badge-yellow">
-                    Get In Touch
-                </div>
-                <h2 class="section-title text-4xl md:text-5xl font-bold mb-6">Let's Create Together</h2>
-                <p class="text-lg opacity-80 max-w-2xl mx-auto">
+                <div class="badge-dark mb-4">Get In Touch</div>
+                <h2 class="font-fraunces text-4xl md:text-5xl font-bold mb-6 text-gray-900">Let's Create Together</h2>
+                <p class="text-lg opacity-80 max-w-2xl mx-auto text-gray-700">
                     Ready to bring your vision to life? We'd love to hear about your project.
                 </p>
             </div>
@@ -593,38 +507,38 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <!-- Contact Info -->
                 <div class="space-y-6 fade-in">
-                    <div class="card-dark-on-yellow rounded-lg shadow-xl p-6">
+                    <div class="bg-gray-900 rounded-lg shadow-xl p-6">
                         <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 rounded-lg flex items-center justify-center" style="background-color: rgba(182, 154, 42, 0.3);">
-                                <span class="text-white text-xl">✉</span>
+                            <div class="w-12 h-12 bg-golden rounded-lg flex items-center justify-center">
+                                <span class="text-gray-900 text-xl">✉</span>
                             </div>
                             <div>
                                 <h3 class="font-semibold text-white">Email</h3>
-                                <p class="text-gray-300">hello@charliemotion.com</p>
+                                <p class="text-gray-300">vivek@cinecraftindia.com</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="card-dark-on-yellow rounded-lg shadow-xl p-6">
+                    <div class="bg-gray-900 rounded-lg shadow-xl p-6">
                         <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 rounded-lg flex items-center justify-center" style="background-color: rgba(182, 154, 42, 0.3);">
-                                <span class="text-white text-xl">📞</span>
+                            <div class="w-12 h-12 bg-golden rounded-lg flex items-center justify-center">
+                                <span class="text-gray-900 text-xl">📞</span>
                             </div>
                             <div>
                                 <h3 class="font-semibold text-white">Phone</h3>
-                                <p class="text-gray-300">+1 (555) 123-FILM</p>
+                                <p class="text-gray-300">+91 84179 46786</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="card-dark-on-yellow rounded-lg shadow-xl p-6">
+                    <div class="bg-gray-900 rounded-lg shadow-xl p-6">
                         <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 rounded-lg flex items-center justify-center" style="background-color: rgba(182, 154, 42, 0.3);">
-                                <span class="text-white text-xl">📍</span>
+                            <div class="w-12 h-12 bg-golden rounded-lg flex items-center justify-center">
+                                <span class="text-gray-900 text-xl">📍</span>
                             </div>
                             <div>
                                 <h3 class="font-semibold text-white">Studio</h3>
-                                <p class="text-gray-300">Los Angeles, CA</p>
+                                <p class="text-gray-300">Andheri West, Mumbai</p>
                             </div>
                         </div>
                     </div>
@@ -632,22 +546,22 @@
 
                 <!-- Contact Form -->
                 <div class="lg:col-span-2 fade-in">
-                    <div class="card-light-on-yellow rounded-lg shadow-xl p-8">
+                    <div class="bg-white rounded-lg shadow-xl p-8">
                         <form id="contact-form" class="space-y-6">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-900 mb-2">Name</label>
-                                    <input type="text" class="form-input" placeholder="Your name" required>
+                                    <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden focus:border-transparent" placeholder="Your name" required>
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-900 mb-2">Email</label>
-                                    <input type="email" class="form-input" placeholder="your@email.com" required>
+                                    <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden focus:border-transparent" placeholder="your@email.com" required>
                                 </div>
                             </div>
 
                             <div>
                                 <label class="block text-sm font-medium text-gray-900 mb-2">Project Type</label>
-                                <select class="form-select" required>
+                                <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden focus:border-transparent" required>
                                     <option value="">Select project type</option>
                                     <option value="commercial">Commercial</option>
                                     <option value="music-video">Music Video</option>
@@ -659,10 +573,10 @@
 
                             <div>
                                 <label class="block text-sm font-medium text-gray-900 mb-2">Message</label>
-                                <textarea class="form-textarea" placeholder="Tell us about your vision..." required></textarea>
+                                <textarea class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden focus:border-transparent resize-none" rows="5" placeholder="Tell us about your vision..." required></textarea>
                             </div>
 
-                            <button type="submit" class="btn-dark-yellow w-full">
+                            <button type="submit" class="bg-gray-900 text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-all btn-modern font-medium w-full">
                                 Send Message ✉
                             </button>
                         </form>
@@ -672,16 +586,14 @@
         </div>
     </section>
 
-    <!-- Footer - White Background -->
-    <footer class="section-white py-16">
+    <!-- Footer - Cream Background -->
+    <footer class="bg-cream py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
                 <!-- Company Info -->
                 <div class="lg:col-span-2">
                     <div class="flex items-center space-x-4 mb-6">
-                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
-                            <span class="text-white font-bold text-xl">▶</span>
-                        </div>
+                        <img src="public/logo.png" alt="Charlie Motion Pictures" class="h-16">
                         <div>
                             <div class="text-2xl font-bold text-gray-900">Charlie Motion Pictures</div>
                             <div class="text-sm text-gray-600 uppercase tracking-wider">Crafting Timeless Stories</div>
@@ -713,7 +625,7 @@
                     <h3 class="text-xl font-bold text-gray-900 mb-6">Quick Links</h3>
                     <ul class="space-y-3">
                         <li><a href="#about" class="text-gray-600 hover:text-gray-900 transition-colors">About Us</a></li>
-                        <li><a href="#portfolio" class="text-gray-600 hover:text-gray-900 transition-colors">Our Work</a></li>
+                        <li><a href="#work" class="text-gray-600 hover:text-gray-900 transition-colors">Our Work</a></li>
                         <li><a href="#team" class="text-gray-600 hover:text-gray-900 transition-colors">Our Team</a></li>
                         <li><a href="#contact" class="text-gray-600 hover:text-gray-900 transition-colors">Contact</a></li>
                     </ul>
@@ -747,8 +659,8 @@
 
     <script>
         // Mobile Menu Toggle
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
             const line1 = document.getElementById('line1');
             const line2 = document.getElementById('line2');
             const line3 = document.getElementById('line3');
@@ -764,6 +676,21 @@
                 line2.style.opacity = '1';
                 line3.style.transform = 'rotate(0deg) translateY(0)';
             }
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const mobileMenu = document.getElementById('mobileMenu');
+                const line1 = document.getElementById('line1');
+                const line2 = document.getElementById('line2');
+                const line3 = document.getElementById('line3');
+                
+                mobileMenu.classList.remove('open');
+                line1.style.transform = 'rotate(0deg) translateY(0)';
+                line2.style.opacity = '1';
+                line3.style.transform = 'rotate(0deg) translateY(0)';
+            });
         });
 
         // Smooth Scrolling
@@ -792,7 +719,7 @@
 
         // Scroll Reveal Animation
         function revealOnScroll() {
-            const reveals = document.querySelectorAll('.fade-in');
+            const reveals = document.querySelectorAll('.fade-in, .slide-up');
             
             reveals.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
@@ -803,6 +730,39 @@
                 }
             });
         }
+
+        // Counter Animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('[data-count]');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        counter.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = Math.floor(current);
+                    }
+                }, 16);
+            });
+        }
+
+        // Trigger counter animation when about section is visible
+        const aboutSection = document.querySelector('#about');
+        const aboutObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    aboutObserver.unobserve(entry.target);
+                }
+            });
+        });
+        aboutObserver.observe(aboutSection);
 
         // Form Submission
         document.getElementById('contact-form').addEventListener('submit', function(e) {
@@ -821,10 +781,24 @@
                 setTimeout(() => {
                     button.innerHTML = originalText;
                     button.disabled = false;
-                    button.style.backgroundColor = '#2d2d2d';
+                    button.style.backgroundColor = '';
                     this.reset();
                 }, 2000);
             }, 1500);
+        });
+
+        // Charlie Chaplin Hat Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const hat = document.getElementById('chaplinHat');
+            
+            // Hat click interaction
+            hat.addEventListener('click', function() {
+                // Tip the hat animation
+                this.style.transform = 'translate(-50%, -180px) rotate(15deg) scale(1.1)';
+                setTimeout(() => {
+                    this.style.transform = 'translate(-50%, -180px) rotate(0deg) scale(1)';
+                }, 300);
+            });
         });
 
         // Initialize
@@ -834,16 +808,6 @@
 
         // Scroll Events
         window.addEventListener('scroll', revealOnScroll);
-
-        // Navbar Background on Scroll
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-            } else {
-                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-            }
-        });
     </script>
 </body>
 </html>
