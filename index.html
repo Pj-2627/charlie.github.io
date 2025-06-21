@@ -210,6 +210,7 @@
         .must {
             animation: blink 1s infinite;
         }
+
         /* Hat SVG styling */
         .hat-svg {
             filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
@@ -232,9 +233,11 @@
                     <img src="public/logo.png" alt="Charlie Motion Picture" class="h-12">
                     <div>
                         <div class="font-fraunces font-bold text-xl text-gray-900">Charlie Motion</div>
-                        <div class="text-xs text-gray-600 flex justify-center items-center gap-[5px] uppercase tracking-wider">
-                    <div class="h-px bg-gray-900 w-8"></div>Picture
-                    <div class="h-px bg-gray-900 w-8"></div></div>
+                        <div
+                            class="text-xs text-gray-600 flex justify-center items-center gap-[5px] uppercase tracking-wider">
+                            <div class="h-px bg-gray-900 w-8"></div>Picture
+                            <div class="h-px bg-gray-900 w-8"></div>
+                        </div>
                     </div>
                 </div>
 
@@ -276,13 +279,15 @@
         <div class="absolute bottom-20 left-20 w-96 h-96 rounded-full blur-3xl opacity-10 bg-gray-900"></div>
 
         <!-- Charlie Chaplin Hat Animation -->
-        <div class="absolute top-0 left-0 w-full h-screen flex justify-center items-center flex-col gap-[-10px] overflow-hidden">
+        <div
+            class="absolute top-0 left-0 w-full h-screen flex justify-center items-center flex-col gap-[-10px] overflow-hidden">
             <img class="hat-svg chaplin-hat w-[80px]" src="public/hat.png" alt="Charlie Chaplin Hat">
             <img class="must hat-svg w-[80px] -translate-y-[180px]" src="public/must.png" alt="Charlie Chaplin Hat">
         </div>
         <div class="relative z-10 text-center pt-16 px-4 max-w-6xl mx-auto">
             <div class="mb-8 fade-in title-delayed">
-                <h1 class="font-fraunces text-6xl md:text-4xl lg:text-5xl font-bold mb-4 text-gray-900">Charlie Motion</h1>
+                <h1 class="font-fraunces text-6xl md:text-4xl lg:text-5xl font-bold mb-4 text-gray-900">Charlie Motion
+                </h1>
                 <div class="flex items-center justify-center space-x-4 mb-6">
                     <div class="h-px bg-gray-900 w-16"></div>
                     <h2 class="text-2xl md:text-3xl opacity-80 font-light text-gray-900">Picture</h2>
@@ -394,81 +399,95 @@
                     A collection of our finest productions across various genres and formats
                 </p>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-                <!-- Project 1 - ASUR 2 -->
-                <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover fade-in">
-                    <div class="relative">
-                        <img src="public/work/asur.jpeg" alt="ASUR - 2" class="w-full h-64 object-cover">
-                        <div
-                            class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <button
-                                class="w-12 h-12 bg-golden rounded-full flex items-center justify-center text-gray-900">
-                                ▶
-                            </button>
+                <!-- Project 1 -->
+                <div class="group relative overflow-hidden cursor-pointer" data-project="behind-camera"
+                    id="el-pcgecx3j">
+                    <div class="relative" id="el-hqys4bkr">
+                        <img src="public/work/asur.jpeg" alt="ASUR - 2"
+                            class="w-full h-80 object-cover grayscale border-2 border-gray-800 rounded-lg mx-2.5 my-2.5 transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:grayscale-0 active-edit-image"
+                            id="el-9c5ta78w" style="max-width: 100%; object-fit: cover; height: 322px;">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 ease-in-out rounded-lg mx-2.5 my-2.5"
+                            id="el-b5vsxn0w"></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out"
+                            id="el-66tf4gsn">
+                            <h3 class="font-playfair text-3xl font-bold text-white text-center px-4" id="el-myn3obuf"
+                                data-original-content="Behind the Lens"
+                                style="transition: outline 0.2s, background-color 0.2s;" contenteditable="false">
+                                ASUR - 2&nbsp;</h3>
                         </div>
-                        <span class="badge-dark absolute top-4 left-4">Web Series</span>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-gray-900">ASUR - 2</h3>
-                        <p class="text-gray-600 mb-4">Line Producer for this gripping psychological thriller series</p>
+                        <div class="absolute top-4 left-4">
+                            <span class="badge-dark">Web Series</span>
+                            <span class="badge-dark">Line Producer</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Project 2 - Madam Chief Minister -->
-                <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover fade-in">
-                    <div class="relative">
-                        <img src="public/work/MCM.jpeg" alt="MADAM CHIEF MINISTER" class="w-full h-64 object-cover">
-                        <div
-                            class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <button
-                                class="w-12 h-12 bg-golden rounded-full flex items-center justify-center text-gray-900">
-                                ▶
-                            </button>
+                <!-- Project 2 -->
+                <div class="group relative overflow-hidden cursor-pointer" data-project="vintage-portrait"
+                    id="el-38aziykr">
+                    <div class="relative" id="el-ch0i4dnm">
+                        <img src="public/work/MCM.jpeg" alt="MADAM CHIEF MINISTER"
+                            class="w-full h-80 object-cover grayscale border-2 border-gray-800 rounded-lg mx-2.5 my-2.5 transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:grayscale-0 active-edit-image"
+                            id="el-quel0cpi" style="max-width: 100%; object-fit: cover;">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 ease-in-out rounded-lg mx-2.5 my-2.5"
+                            id="el-bfuxkhvn"></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out"
+                            id="el-cbkwxsmg">
+                            <h3 class="font-playfair text-3xl font-bold text-white text-center px-4" id="el-vwrqkh2k"
+                                data-original-content="Vintage Elegance"
+                                style="transition: outline 0.2s, background-color 0.2s;" contenteditable="false">
+                                MADAM CHIEF MINISTER</h3>
                         </div>
-                        <span class="badge-dark absolute top-4 left-4">Feature Film</span>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-gray-900">Madam Chief Minister</h3>
-                        <p class="text-gray-600 mb-4">Line Producer for this powerful political drama</p>
+                        <div class="absolute top-4 left-4">
+                            <span class="badge-dark">Feature Film</span>
+                            <span class="badge-dark">Line Producer</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Project 3 - ZIBAH -->
-                <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover fade-in">
-                    <div class="relative">
-                        <img src="public/work/zibah.jpeg" alt="ZIBAH" class="w-full h-64 object-cover">
-                        <div
-                            class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <button
-                                class="w-12 h-12 bg-golden rounded-full flex items-center justify-center text-gray-900">
-                                ▶
-                            </button>
+                <!-- Project 3 -->
+                <div class="group relative overflow-hidden cursor-pointer" data-project="neon-nights" id="el-6l74n2d9">
+                    <div class="relative" id="el-a7exkb9p">
+                        <img src="public/work/zibah.jpeg" alt="ZIBAH"
+                            class="w-full h-80 object-cover grayscale border-2 border-gray-800 rounded-lg mx-2.5 my-2.5 transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:grayscale-0 active-edit-image"
+                            id="el-v5d4oduv" style="max-width: 100%; object-fit: cover;">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 ease-in-out rounded-lg mx-2.5 my-2.5"
+                            id="el-uvegtui0"></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out"
+                            id="el-dbuqa9cq">
+                            <h3 class="font-playfair text-3xl font-bold text-white text-center px-4" id="el-q6fgfb56"
+                                data-original-content="Neon Nights"
+                                style="transition: outline 0.2s, background-color 0.2s;" contenteditable="false">
+                                ZIBAH</h3>
                         </div>
-                        <span class="badge-dark absolute top-4 left-4">Short Film</span>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-gray-900">ZIBAH</h3>
-                        <p class="text-gray-600 mb-4">Producer for this compelling short film narrative</p>
+                        <div class="absolute top-4 left-4">
+                            <span class="badge-dark">Short Film</span>
+                            <span class="badge-dark">Producer</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Project 4 - PUSHTAINI -->
-                <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover fade-in">
-                    <div class="relative">
-                        <img src="public/work/pushtaini.avif" alt="PUSHTAINI" class="w-full h-64 object-cover">
-                        <div
-                            class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <button
-                                class="w-12 h-12 bg-golden rounded-full flex items-center justify-center text-gray-900">
-                                ▶
-                            </button>
+                <!-- Project 4 -->
+                <div class="group relative overflow-hidden cursor-pointer" data-project="urban-stories"
+                    id="el-1696clrj">
+                    <div class="relative" id="el-9tmfal7b">
+                        <img src="public/work/pushtaini.avif" alt="PUSHTAINI"
+                            class="w-full h-80 object-cover grayscale border-2 border-gray-800 rounded-lg mx-2.5 my-2.5 transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:grayscale-0 active-edit-image"
+                            id="el-mrtuco7e" style="max-width: 100%; object-fit: cover;">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 ease-in-out rounded-lg mx-2.5 my-2.5"
+                            id="el-sljgjn9b"></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out"
+                            id="el-q05jd7j2">
+                            <h3 class="font-playfair text-3xl font-bold text-white text-center px-4" id="el-98tqxva7"
+                                data-original-content="Urban Stories"
+                                style="transition: outline 0.2s, background-color 0.2s;" contenteditable="false">
+                                PUSHTAINI</h3>
                         </div>
-                        <span class="badge-dark absolute top-4 left-4">Feature Film</span>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-gray-900">PUSHTAINI</h3>
-                        <p class="text-gray-600 mb-4">Line Producer for this cultural drama</p>
+                        <div class="absolute top-4 left-4">
+                            <span class="badge-dark">Feature Film</span>
+                            <span class="badge-dark">Line Producer</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -631,16 +650,16 @@
     <!-- Footer - Cream Background -->
     <footer class="bg-cream py-4">
         <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-200">
-                <div class="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-                    <p class="text-gray-500 text-sm">© 2024 Charlie Motion Picture. All rights reserved.</p>
-                    <div class="flex space-x-6">
-                        <a href="#" class="text-gray-500 hover:text-gray-900 text-sm transition-colors">Privacy
-                            Policy</a>
-                        <a href="#" class="text-gray-500 hover:text-gray-900 text-sm transition-colors">Terms of
-                            Service</a>
-                    </div>
+            <div class="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+                <p class="text-gray-500 text-sm">© 2024 Charlie Motion Picture. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-gray-900 text-sm transition-colors">Privacy
+                        Policy</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-900 text-sm transition-colors">Terms of
+                        Service</a>
                 </div>
             </div>
+        </div>
         </div>
     </footer>
 
