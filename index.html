@@ -152,7 +152,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* Charlie Chaplin Hat Animation */
+        /* Charlie Chaplin Hat Animation - Keep PC version perfect */
         .chaplin-hat {
             width: 80px;
             opacity: 0;
@@ -161,16 +161,18 @@
             animation-delay: 1s;
         }
 
-        @keyframes flyInHat {
-            0% {
-                transform: translate(-150px, -300px) rotate(-20deg) scale(0.7);
-                opacity: 1;
+        /* Mobile responsive adjustments for hat */
+        @media (max-width: 640px) {
+            .chaplin-hat {
+                width: 60px;
             }
+        }
 
+        @keyframes flyInHat {
             0% {
                 transform: translate(50%, -190px) rotate(-20deg) scale(0.7);
                 opacity: 1;
-            }
+            }   
 
             25% {
                 transform: translate(0%, -250px) rotate(5deg) scale(1.1);
@@ -219,6 +221,14 @@
         /* Title animation delay */
         .title-delayed {
             animation-delay: 2s;
+        }
+
+        /* Mobile responsive adjustments */
+        @media (max-width: 640px) {
+            .word-cycle {
+                text-align: center;
+                min-width: 100px;
+            }
         }
     </style>
 </head>
@@ -274,44 +284,43 @@
 
     <!-- Hero Section - Golden Background -->
     <section id="home" class="bg-golden min-h-screen flex items-center justify-center relative overflow-hidden">
-        <!-- Background Elements -->
-        <div class="absolute top-20 right-20 w-72 h-72 rounded-full blur-3xl opacity-20 bg-gray-900"></div>
-        <div class="absolute bottom-20 left-20 w-96 h-96 rounded-full blur-3xl opacity-10 bg-gray-900"></div>
-
-        <!-- Charlie Chaplin Hat Animation -->
+        <!-- Charlie Chaplin Hat Animation - Keep original positioning for PC -->
         <div
             class="absolute top-0 left-0 w-full h-screen flex justify-center items-center flex-col gap-[-10px] overflow-hidden">
-            <img class="hat-svg chaplin-hat w-[80px]" src="public/hat.png" alt="Charlie Chaplin Hat">
-            <img class="must hat-svg w-[80px] -translate-y-[180px]" src="public/must.png" alt="Charlie Chaplin Hat">
+            <img class="hat-svg chaplin-hat w-[80px] max-sm:w-[60px]" src="public/hat.png" alt="Charlie Chaplin Hat">
+            <img class="must hat-svg w-[80px] max-sm:w-[60px] -translate-y-[180px]" src="public/must.png" alt="Charlie Chaplin Mustache">
         </div>
+        
         <div class="relative z-10 text-center pt-16 px-4 max-w-6xl mx-auto">
             <div class="mb-8 fade-in title-delayed">
-                <h1 class="font-fraunces text-6xl md:text-4xl lg:text-5xl font-bold mb-4 text-gray-900">Charlie Motion
-                </h1>
+                <h1 class="font-fraunces text-6xl md:text-4xl lg:text-5xl font-bold mb-4 text-gray-900
+                           max-sm:text-4xl">Charlie Motion</h1>
                 <div class="flex items-center justify-center space-x-4 mb-6">
-                    <div class="h-px bg-gray-900 w-16"></div>
-                    <h2 class="text-2xl md:text-3xl opacity-80 font-light text-gray-900">Picture</h2>
-                    <div class="h-px bg-gray-900 w-16"></div>
+                    <div class="h-px bg-gray-900 w-16 max-sm:w-8"></div>
+                    <h2 class="text-2xl md:text-3xl opacity-80 font-light text-gray-900 max-sm:text-xl">Picture</h2>
+                    <div class="h-px bg-gray-900 w-16 max-sm:w-8"></div>
                 </div>
             </div>
 
             <div class="mb-12 fade-in title-delayed">
-                <p class="text-xl md:text-2xl mb-4 text-gray-900">
+                <p class="text-xl md:text-2xl mb-4 text-gray-900 max-sm:text-lg">
                     Crafting Cinematic <span id="cycling-word"
                         class="text-gray-900 justify-center font-bold word-cycle">Stories</span>
                 </p>
-                <p class="text-lg opacity-80 max-w-2xl mx-auto text-gray-700">
+                <p class="text-lg opacity-80 max-w-2xl mx-auto text-gray-700 max-sm:text-base max-sm:px-4">
                     Where passion meets precision in visual storytelling
                 </p>
             </div>
 
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center fade-in title-delayed">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center fade-in title-delayed max-sm:px-4">
                 <button
-                    class="bg-gray-900 text-white px-8 py-4 rounded-full hover:bg-gray-800 transition-all btn-modern font-medium">
+                    class="bg-gray-900 text-white px-8 py-4 rounded-full hover:bg-gray-800 transition-all btn-modern font-medium
+                           max-sm:w-full max-sm:px-6 max-sm:py-3 max-sm:text-sm">
                     View Our Work →
                 </button>
                 <button
-                    class="border-2 border-gray-900 text-gray-900 px-8 py-4 rounded-full hover:bg-gray-900 hover:text-white transition-all btn-modern font-medium">
+                    class="border-2 border-gray-900 text-gray-900 px-8 py-4 rounded-full hover:bg-gray-900 hover:text-white transition-all btn-modern font-medium
+                           max-sm:w-full max-sm:px-6 max-sm:py-3 max-sm:text-sm">
                     ▶ Watch Reel
                 </button>
             </div>
@@ -319,51 +328,51 @@
     </section>
 
     <!-- About Section - Cream Background -->
-    <section id="about" class="bg-cream py-24">
+    <section id="about" class="bg-cream py-24 max-sm:py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-sm:gap-8">
                 <!-- Left Content -->
                 <div class="fade-in">
                     <div class="mb-8">
                         <div class="badge-golden mb-4">About Us</div>
-                        <h2 class="font-fraunces text-4xl md:text-5xl font-bold mb-6 text-gray-900">We Create Magic
+                        <h2 class="font-fraunces text-4xl md:text-5xl font-bold mb-6 text-gray-900 max-sm:text-3xl">We Create Magic
                             Through Motion</h2>
-                        <p class="text-lg text-gray-700 leading-relaxed">
+                        <p class="text-lg text-gray-700 leading-relaxed max-sm:text-base">
                             At Charlie Motion Pictures, stories are everything that we do. We're a bunch of filmmakers, dreamers, and storytellers who believe in the magic of cinema — the kind that makes you feel, think, and remember.
-We started this journey not just to make films, but to create moments. Moments that linger. That connect. That matter. It’s not just about what we make — it’s about why we make it.
+We started this journey not just to make films, but to create moments. Moments that linger. That connect. That matter. It's not just about what we make — it's about why we make it.
                         </p>
                     </div>
                 </div>
 
                 <!-- Right Stats -->
-                <div class="grid grid-cols-2 gap-6 fade-in">
-                    <div class="bg-white rounded-lg shadow-lg p-6 text-center card-hover">
-                        <div class="w-12 h-12 bg-golden rounded-lg flex items-center justify-center mx-auto mb-4">
-                            <span class="text-gray-900 text-xl">🎬</span>
+                <div class="grid grid-cols-2 gap-6 fade-in max-sm:gap-4">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center card-hover max-sm:p-4">
+                        <div class="w-12 h-12 bg-golden rounded-lg flex items-center justify-center mx-auto mb-4 max-sm:w-10 max-sm:h-10 max-sm:mb-3">
+                            <span class="text-gray-900 text-xl max-sm:text-lg">🎬</span>
                         </div>
-                        <div class="text-3xl font-bold mb-2 text-gray-900" data-count="5">0</div>
-                        <div class="text-sm text-gray-600">Projects</div>
+                        <div class="text-3xl font-bold mb-2 text-gray-900 max-sm:text-2xl" data-count="5">0</div>
+                        <div class="text-sm text-gray-600 max-sm:text-xs">Projects</div>
                     </div>
-                    <div class="bg-white rounded-lg shadow-lg p-6 text-center card-hover">
-                        <div class="w-12 h-12 bg-golden rounded-lg flex items-center justify-center mx-auto mb-4">
-                            <span class="text-gray-900 text-xl">🏆</span>
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center card-hover max-sm:p-4">
+                        <div class="w-12 h-12 bg-golden rounded-lg flex items-center justify-center mx-auto mb-4 max-sm:w-10 max-sm:h-10 max-sm:mb-3">
+                            <span class="text-gray-900 text-xl max-sm:text-lg">🏆</span>
                         </div>
-                        <div class="text-3xl font-bold mb-2 text-gray-900" data-count="7">0</div>
-                        <div class="text-sm text-gray-600">Awards</div>
+                        <div class="text-3xl font-bold mb-2 text-gray-900 max-sm:text-2xl" data-count="7">0</div>
+                        <div class="text-sm text-gray-600 max-sm:text-xs">Awards</div>
                     </div>
-                    <div class="bg-white rounded-lg shadow-lg p-6 text-center card-hover">
-                        <div class="w-12 h-12 bg-golden rounded-lg flex items-center justify-center mx-auto mb-4">
-                            <span class="text-gray-900 text-xl">👥</span>
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center card-hover max-sm:p-4">
+                        <div class="w-12 h-12 bg-golden rounded-lg flex items-center justify-center mx-auto mb-4 max-sm:w-10 max-sm:h-10 max-sm:mb-3">
+                            <span class="text-gray-900 text-xl max-sm:text-lg">👥</span>
                         </div>
-                        <div class="text-3xl font-bold mb-2 text-gray-900" data-count="100">0</div>
-                        <div class="text-sm text-gray-600">Happy Clients</div>
+                        <div class="text-3xl font-bold mb-2 text-gray-900 max-sm:text-2xl" data-count="100">0</div>
+                        <div class="text-sm text-gray-600 max-sm:text-xs">Happy Clients</div>
                     </div>
-                    <div class="bg-white rounded-lg shadow-lg p-6 text-center card-hover">
-                        <div class="w-12 h-12 bg-golden rounded-lg flex items-center justify-center mx-auto mb-4">
-                            <span class="text-gray-900 text-xl">⚡</span>
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center card-hover max-sm:p-4">
+                        <div class="w-12 h-12 bg-golden rounded-lg flex items-center justify-center mx-auto mb-4 max-sm:w-10 max-sm:h-10 max-sm:mb-3">
+                            <span class="text-gray-900 text-xl max-sm:text-lg">⚡</span>
                         </div>
-                        <div class="text-3xl font-bold mb-2 text-gray-900" data-count="15">0</div>
-                        <div class="text-sm text-gray-600">Years Experience</div>
+                        <div class="text-3xl font-bold mb-2 text-gray-900 max-sm:text-2xl" data-count="15">0</div>
+                        <div class="text-sm text-gray-600 max-sm:text-xs">Years Experience</div>
                     </div>
                 </div>
             </div>
@@ -371,103 +380,80 @@ We started this journey not just to make films, but to create moments. Moments t
     </section>
 
     <!-- Portfolio Section - Golden Background -->
-    <section id="work" class="bg-golden py-24">
+    <section id="work" class="bg-golden py-24 max-sm:py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 fade-in">
+            <div class="text-center mb-16 fade-in max-sm:mb-12">
                 <div class="badge-dark mb-4">Our Work</div>
-                <h2 class="font-fraunces text-4xl md:text-5xl font-bold mb-6 text-gray-900">Portfolio Showcase</h2>
-                <p class="text-lg opacity-80 max-w-2xl mx-auto text-gray-700">
+                <h2 class="font-fraunces text-4xl md:text-5xl font-bold mb-6 text-gray-900 max-sm:text-3xl">Portfolio Showcase</h2>
+                <p class="text-lg opacity-80 max-w-2xl mx-auto text-gray-700 max-sm:text-base max-sm:px-4">
                     A collection of our finest productions across various genres and formats
                 </p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-sm:gap-6">
                 <!-- Project 1 -->
-                <div class="group relative overflow-hidden cursor-pointer" data-project="behind-camera"
-                    id="el-pcgecx3j">
-                    <div class="relative" id="el-hqys4bkr">
+                <div class="group relative overflow-hidden cursor-pointer" data-project="behind-camera">
+                    <div class="relative">
                         <img src="public/work/asur.jpeg" alt="ASUR - 2"
-                            class="w-full h-80 object-cover border-2 border-gray-800 rounded-lg mx-2.5 my-2.5 transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:grayscale-0 active-edit-image"
-                            id="el-9c5ta78w" style="max-width: 100%; object-fit: cover; height: 322px;">
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 ease-in-out rounded-lg mx-2.5 my-2.5"
-                            id="el-b5vsxn0w"></div>
-                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out"
-                            id="el-66tf4gsn">
-                            <h3 class="font-playfair text-3xl font-bold text-white text-center px-4" id="el-myn3obuf"
-                                data-original-content="Behind the Lens"
-                                style="transition: outline 0.2s, background-color 0.2s;" contenteditable="false">
+                            class="w-full h-80 object-cover border-2 border-gray-800 rounded-lg mx-2.5 my-2.5 transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:grayscale-0 max-sm:h-64 max-sm:mx-0 max-sm:my-0">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 ease-in-out rounded-lg mx-2.5 my-2.5 max-sm:mx-0 max-sm:my-0"></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out">
+                            <h3 class="font-fraunces text-3xl font-bold text-white text-center px-4 max-sm:text-2xl">
                                 ASUR - 2&nbsp;</h3>
                         </div>
-                        <div class="absolute top-4 left-4">
-                            <span class="badge-dark">Web Series</span>
-                            <span class="badge-dark">Line Producer</span>
+                        <div class="absolute top-4 left-4 max-sm:left-2 max-sm:top-2">
+                            <span class="badge-dark max-sm:text-xs max-sm:px-2 max-sm:py-1">Web Series</span>
+                            <span class="badge-dark max-sm:text-xs max-sm:px-2 max-sm:py-1">Line Producer</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project 2 -->
-                <div class="group relative overflow-hidden cursor-pointer" data-project="vintage-portrait"
-                    id="el-38aziykr">
-                    <div class="relative" id="el-ch0i4dnm">
+                <div class="group relative overflow-hidden cursor-pointer" data-project="vintage-portrait">
+                    <div class="relative">
                         <img src="public/work/MCM.jpeg" alt="MADAM CHIEF MINISTER"
-                            class="w-full h-80 object-cover border-2 border-gray-800 rounded-lg mx-2.5 my-2.5 transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:grayscale-0 active-edit-image"
-                            id="el-quel0cpi" style="max-width: 100%; object-fit: cover;">
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 ease-in-out rounded-lg mx-2.5 my-2.5"
-                            id="el-bfuxkhvn"></div>
-                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out"
-                            id="el-cbkwxsmg">
-                            <h3 class="font-playfair text-3xl font-bold text-white text-center px-4" id="el-vwrqkh2k"
-                                data-original-content="Vintage Elegance"
-                                style="transition: outline 0.2s, background-color 0.2s;" contenteditable="false">
+                            class="w-full h-80 object-cover border-2 border-gray-800 rounded-lg mx-2.5 my-2.5 transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:grayscale-0 max-sm:h-64 max-sm:mx-0 max-sm:my-0">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 ease-in-out rounded-lg mx-2.5 my-2.5 max-sm:mx-0 max-sm:my-0"></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out">
+                            <h3 class="font-fraunces text-3xl font-bold text-white text-center px-4 max-sm:text-xl">
                                 MADAM CHIEF MINISTER</h3>
                         </div>
-                        <div class="absolute top-4 left-4">
-                            <span class="badge-dark">Feature Film</span>
-                            <span class="badge-dark">Line Producer</span>
+                        <div class="absolute top-4 left-4 max-sm:left-2 max-sm:top-2">
+                            <span class="badge-dark max-sm:text-xs max-sm:px-2 max-sm:py-1">Feature Film</span>
+                            <span class="badge-dark max-sm:text-xs max-sm:px-2 max-sm:py-1">Line Producer</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project 3 -->
-                <div class="group relative overflow-hidden cursor-pointer" data-project="neon-nights" id="el-6l74n2d9">
-                    <div class="relative" id="el-a7exkb9p">
+                <div class="group relative overflow-hidden cursor-pointer" data-project="neon-nights">
+                    <div class="relative">
                         <img src="public/work/zibah.jpeg" alt="ZIBAH"
-                            class="w-full h-80 object-cover border-2 border-gray-800 rounded-lg mx-2.5 my-2.5 transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:grayscale-0 active-edit-image"
-                            id="el-v5d4oduv" style="max-width: 100%; object-fit: cover;">
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 ease-in-out rounded-lg mx-2.5 my-2.5"
-                            id="el-uvegtui0"></div>
-                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out"
-                            id="el-dbuqa9cq">
-                            <h3 class="font-playfair text-3xl font-bold text-white text-center px-4" id="el-q6fgfb56"
-                                data-original-content="Neon Nights"
-                                style="transition: outline 0.2s, background-color 0.2s;" contenteditable="false">
+                            class="w-full h-80 object-cover border-2 border-gray-800 rounded-lg mx-2.5 my-2.5 transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:grayscale-0 max-sm:h-64 max-sm:mx-0 max-sm:my-0">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 ease-in-out rounded-lg mx-2.5 my-2.5 max-sm:mx-0 max-sm:my-0"></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out">
+                            <h3 class="font-fraunces text-3xl font-bold text-white text-center px-4 max-sm:text-2xl">
                                 ZIBAH</h3>
                         </div>
-                        <div class="absolute top-4 left-4">
-                            <span class="badge-dark">Short Film</span>
-                            <span class="badge-dark">Producer</span>
+                        <div class="absolute top-4 left-4 max-sm:left-2 max-sm:top-2">
+                            <span class="badge-dark max-sm:text-xs max-sm:px-2 max-sm:py-1">Short Film</span>
+                            <span class="badge-dark max-sm:text-xs max-sm:px-2 max-sm:py-1">Producer</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project 4 -->
-                <div class="group relative overflow-hidden cursor-pointer" data-project="urban-stories"
-                    id="el-1696clrj">
-                    <div class="relative" id="el-9tmfal7b">
+                <div class="group relative overflow-hidden cursor-pointer" data-project="urban-stories">
+                    <div class="relative">
                         <img src="public/work/pushtaini.avif" alt="PUSHTAINI"
-                            class="w-full h-80 object-cover border-2 border-gray-800 rounded-lg mx-2.5 my-2.5 transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:grayscale-0 active-edit-image"
-                            id="el-mrtuco7e" style="max-width: 100%; object-fit: cover;">
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 ease-in-out rounded-lg mx-2.5 my-2.5"
-                            id="el-sljgjn9b"></div>
-                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out"
-                            id="el-q05jd7j2">
-                            <h3 class="font-playfair text-3xl font-bold text-white text-center px-4" id="el-98tqxva7"
-                                data-original-content="Urban Stories"
-                                style="transition: outline 0.2s, background-color 0.2s;" contenteditable="false">
+                            class="w-full h-80 object-cover border-2 border-gray-800 rounded-lg mx-2.5 my-2.5 transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:grayscale-0 max-sm:h-64 max-sm:mx-0 max-sm:my-0">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 ease-in-out rounded-lg mx-2.5 my-2.5 max-sm:mx-0 max-sm:my-0"></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out">
+                            <h3 class="font-fraunces text-3xl font-bold text-white text-center px-4 max-sm:text-2xl">
                                 PUSHTAINI</h3>
                         </div>
-                        <div class="absolute top-4 left-4">
-                            <span class="badge-dark">Feature Film</span>
-                            <span class="badge-dark">Line Producer</span>
+                        <div class="absolute top-4 left-4 max-sm:left-2 max-sm:top-2">
+                            <span class="badge-dark max-sm:text-xs max-sm:px-2 max-sm:py-1">Feature Film</span>
+                            <span class="badge-dark max-sm:text-xs max-sm:px-2 max-sm:py-1">Line Producer</span>
                         </div>
                     </div>
                 </div>
@@ -476,45 +462,45 @@ We started this journey not just to make films, but to create moments. Moments t
     </section>
 
     <!-- Team Section - Cream Background -->
-    <section id="team" class="bg-cream py-24">
-        <div class="max-w-6xl mx-auto px-6 lg:px-8">
-            <div class="text-center mb-16 fade-in">
+    <section id="team" class="bg-cream py-24 max-sm:py-16">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8 max-sm:px-4">
+            <div class="text-center mb-16 fade-in max-sm:mb-12">
                 <div class="badge-golden mb-4">Our Team</div>
-                <h2 class="font-fraunces text-4xl md:text-5xl font-bold mb-6 text-gray-900">The Visionaries</h2>
+                <h2 class="font-fraunces text-4xl md:text-5xl font-bold mb-6 text-gray-900 max-sm:text-3xl">The Visionaries</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-sm:gap-8">
                 <!-- Team Member 1 -->
                 <div class="text-center slide-up" style="animation-delay: 0.2s;">
-                    <div class="w-48 h-48 bg-white rounded-full mx-auto mb-6 overflow-hidden shadow-lg">
+                    <div class="w-48 h-48 bg-white rounded-full mx-auto mb-6 overflow-hidden shadow-lg max-sm:w-32 max-sm:h-32 max-sm:mb-4">
                         <img src="public/team/usha.jpg" alt="Punjal Jain" class="w-full h-full object-cover">
                     </div>
-                    <h3 class="font-fraunces text-xl font-semibold mb-2 text-gray-900">Usha Tiwari Pandey</h3>
-                    <p class="mb-4 font-medium badge-golden">Producer</p>
-                    <p class="text-sm text-gray-600 leading-relaxed">
+                    <h3 class="font-fraunces text-xl font-semibold mb-2 text-gray-900 max-sm:text-lg">Usha Tiwari Pandey</h3>
+                    <p class="mb-4 font-medium badge-golden max-sm:text-xs max-sm:mb-3">Producer</p>
+                    <p class="text-sm text-gray-600 leading-relaxed max-sm:text-xs">
                         Storytelling architect skilled in production and design with experience across multiple formats.
                     </p>
                 </div>
                 <!-- Team Member 2 -->
                 <div class="text-center slide-up">
-                    <div class="w-48 h-48 bg-white rounded-full mx-auto mb-6 overflow-hidden shadow-lg">
+                    <div class="w-48 h-48 bg-white rounded-full mx-auto mb-6 overflow-hidden shadow-lg max-sm:w-32 max-sm:h-32 max-sm:mb-4">
                         <img src="public/team/vivek.png" alt="Vivek Agrawal" class="w-full h-full object-cover">
                     </div>
-                    <h3 class="font-fraunces text-xl font-semibold mb-2 text-gray-900">Vivek Agrawal</h3>
-                    <p class="mb-4 font-medium badge-golden">Producer</p>
-                    <p class="text-sm text-gray-600 leading-relaxed">
+                    <h3 class="font-fraunces text-xl font-semibold mb-2 text-gray-900 max-sm:text-lg">Vivek Agrawal</h3>
+                    <p class="mb-4 font-medium badge-golden max-sm:text-xs max-sm:mb-3">Producer</p>
+                    <p class="text-sm text-gray-600 leading-relaxed max-sm:text-xs">
                         Visionary filmmaker with 15+ years crafting compelling narratives for global audiences.
                     </p>
                 </div>
 
                 <!-- Team Member 3 -->
                 <div class="text-center slide-up" style="animation-delay: 0.1s;">
-                    <div class="w-48 h-48 bg-white rounded-full mx-auto mb-6 overflow-hidden shadow-lg">
+                    <div class="w-48 h-48 bg-white rounded-full mx-auto mb-6 overflow-hidden shadow-lg max-sm:w-32 max-sm:h-32 max-sm:mb-4">
                         <img src="public/team/roopal.jpg" alt="Archit Agrawal" class="w-full h-full object-cover">
                     </div>
-                    <h3 class="font-fraunces text-xl font-semibold mb-2 text-gray-900">Roopal Khandelwal</h3>
-                    <p class="mb-4 font-medium badge-golden">Line Producer</p>
-                    <p class="text-sm text-gray-600 leading-relaxed">
+                    <h3 class="font-fraunces text-xl font-semibold mb-2 text-gray-900 max-sm:text-lg">Roopal Khandelwal</h3>
+                    <p class="mb-4 font-medium badge-golden max-sm:text-xs max-sm:mb-3">Line Producer</p>
+                    <p class="text-sm text-gray-600 leading-relaxed max-sm:text-xs">
                         Experienced in film & web production, commercials, and live events.
                     </p>
                 </div>
@@ -523,51 +509,51 @@ We started this journey not just to make films, but to create moments. Moments t
     </section>
 
     <!-- Contact Section - Golden Background -->
-    <section id="contact" class="bg-golden py-24">
+    <section id="contact" class="bg-golden py-24 max-sm:py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 fade-in">
+            <div class="text-center mb-16 fade-in max-sm:mb-12">
                 <div class="badge-dark mb-4">Get In Touch</div>
-                <h2 class="font-fraunces text-4xl md:text-5xl font-bold mb-6 text-gray-900">Let's Create Together</h2>
-                <p class="text-lg opacity-80 max-w-2xl mx-auto text-gray-700">
+                <h2 class="font-fraunces text-4xl md:text-5xl font-bold mb-6 text-gray-900 max-sm:text-3xl">Let's Create Together</h2>
+                <p class="text-lg opacity-80 max-w-2xl mx-auto text-gray-700 max-sm:text-base max-sm:px-4">
                     Ready to bring your vision to life? We'd love to hear about your project.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-sm:gap-6">
                 <!-- Contact Info -->
-                <div class="space-y-6 fade-in">
-                    <div class="bg-gray-900 rounded-lg shadow-xl p-6">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-golden rounded-lg flex items-center justify-center">
-                                <span class="text-gray-900 text-xl">✉</span>
+                <div class="space-y-6 fade-in max-sm:space-y-4">
+                    <div class="bg-gray-900 rounded-lg shadow-xl p-6 max-sm:p-4">
+                        <div class="flex items-center space-x-4 max-sm:space-x-3">
+                            <div class="w-12 h-12 bg-golden rounded-lg flex items-center justify-center max-sm:w-10 max-sm:h-10">
+                                <span class="text-gray-900 text-xl max-sm:text-lg">✉</span>
                             </div>
                             <div>
-                                <h3 class="font-semibold text-white">Email</h3>
-                                <p class="text-gray-300">vivek@cinecraftindia.com</p>
+                                <h3 class="font-semibold text-white max-sm:text-sm">Email</h3>
+                                <p class="text-gray-300 max-sm:text-xs break-all">vivek@cinecraftindia.com</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-gray-900 rounded-lg shadow-xl p-6">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-golden rounded-lg flex items-center justify-center">
-                                <span class="text-gray-900 text-xl">📞</span>
+                    <div class="bg-gray-900 rounded-lg shadow-xl p-6 max-sm:p-4">
+                        <div class="flex items-center space-x-4 max-sm:space-x-3">
+                            <div class="w-12 h-12 bg-golden rounded-lg flex items-center justify-center max-sm:w-10 max-sm:h-10">
+                                <span class="text-gray-900 text-xl max-sm:text-lg">📞</span>
                             </div>
                             <div>
-                                <h3 class="font-semibold text-white">Phone</h3>
-                                <p class="text-gray-300">+91 84179 46786</p>
+                                <h3 class="font-semibold text-white max-sm:text-sm">Phone</h3>
+                                <p class="text-gray-300 max-sm:text-xs">+91 84179 46786</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-gray-900 rounded-lg shadow-xl p-6">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-golden rounded-lg flex items-center justify-center">
-                                <span class="text-gray-900 text-xl">📍</span>
+                    <div class="bg-gray-900 rounded-lg shadow-xl p-6 max-sm:p-4">
+                        <div class="flex items-center space-x-4 max-sm:space-x-3">
+                            <div class="w-12 h-12 bg-golden rounded-lg flex items-center justify-center max-sm:w-10 max-sm:h-10">
+                                <span class="text-gray-900 text-xl max-sm:text-lg">📍</span>
                             </div>
                             <div>
-                                <h3 class="font-semibold text-white">Studio</h3>
-                                <p class="text-gray-300">Andheri West, Mumbai</p>
+                                <h3 class="font-semibold text-white max-sm:text-sm">Studio</h3>
+                                <p class="text-gray-300 max-sm:text-xs">Andheri West, Mumbai</p>
                             </div>
                         </div>
                     </div>
@@ -575,27 +561,27 @@ We started this journey not just to make films, but to create moments. Moments t
 
                 <!-- Contact Form -->
                 <div class="lg:col-span-2 fade-in">
-                    <div class="bg-white rounded-lg shadow-xl p-8">
-                        <form id="contact-form" class="space-y-6">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white rounded-lg shadow-xl p-8 max-sm:p-6">
+                        <form id="contact-form" class="space-y-6 max-sm:space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-sm:gap-4">
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-900 mb-2">Name</label>
+                                    <label class="block text-sm font-medium text-gray-900 mb-2 max-sm:text-xs">Name</label>
                                     <input type="text"
-                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden focus:border-transparent"
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden focus:border-transparent max-sm:px-3 max-sm:py-2 max-sm:text-sm"
                                         placeholder="Your name" required>
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-900 mb-2">Email</label>
+                                    <label class="block text-sm font-medium text-gray-900 mb-2 max-sm:text-xs">Email</label>
                                     <input type="email"
-                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden focus:border-transparent"
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden focus:border-transparent max-sm:px-3 max-sm:py-2 max-sm:text-sm"
                                         placeholder="your@email.com" required>
                                 </div>
                             </div>
 
                             <div>
-                                <label class="block text-sm font-medium text-gray-900 mb-2">Project Type</label>
+                                <label class="block text-sm font-medium text-gray-900 mb-2 max-sm:text-xs">Project Type</label>
                                 <select
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden focus:border-transparent"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden focus:border-transparent max-sm:px-3 max-sm:py-2 max-sm:text-sm"
                                     required>
                                     <option value="">Select project type</option>
                                     <option value="commercial">Commercial</option>
@@ -607,14 +593,14 @@ We started this journey not just to make films, but to create moments. Moments t
                             </div>
 
                             <div>
-                                <label class="block text-sm font-medium text-gray-900 mb-2">Message</label>
+                                <label class="block text-sm font-medium text-gray-900 mb-2 max-sm:text-xs">Message</label>
                                 <textarea
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden focus:border-transparent resize-none"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-golden focus:border-transparent resize-none max-sm:px-3 max-sm:py-2 max-sm:text-sm"
                                     rows="5" placeholder="Tell us about your vision..." required></textarea>
                             </div>
 
                             <button type="submit"
-                                class="bg-gray-900 text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-all btn-modern font-medium w-full">
+                                class="bg-gray-900 text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-all btn-modern font-medium w-full max-sm:px-6 max-sm:py-3 max-sm:text-sm">
                                 Send Message ✉
                             </button>
                         </form>
@@ -627,16 +613,15 @@ We started this journey not just to make films, but to create moments. Moments t
     <!-- Footer - Cream Background -->
     <footer class="bg-cream py-4">
         <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-200">
-            <div class="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-                <p class="text-gray-500 text-sm">© 2024 Charlie Motion Picture. All rights reserved.</p>
-                <div class="flex space-x-6">
-                    <a href="#" class="text-gray-500 hover:text-gray-900 text-sm transition-colors">Privacy
+            <div class="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0 max-sm:py-4">
+                <p class="text-gray-500 text-sm max-sm:text-xs text-center">© 2024 Charlie Motion Picture. All rights reserved.</p>
+                <div class="flex space-x-6 max-sm:space-x-4">
+                    <a href="#" class="text-gray-500 hover:text-gray-900 text-sm transition-colors max-sm:text-xs">Privacy
                         Policy</a>
-                    <a href="#" class="text-gray-500 hover:text-gray-900 text-sm transition-colors">Terms of
+                    <a href="#" class="text-gray-500 hover:text-gray-900 text-sm transition-colors max-sm:text-xs">Terms of
                         Service</a>
                 </div>
             </div>
-        </div>
         </div>
     </footer>
 
